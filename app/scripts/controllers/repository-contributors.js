@@ -2,19 +2,18 @@
 
 /**
  * @ngdoc function
- * @name githubExplorerApp.controller:ReposirotyDetailsCtrl
+ * @name githubExplorerApp.controller:RepositoryContributorsJsCtrl
  * @description
- * # ReposirotyDetailsCtrl
+ * # RepositoryContributorsJsCtrl
  * Controller of the githubExplorerApp
  */
 angular.module('githubExplorerApp')
-  .controller('ReposirotyDetailsCtrl', function (repository) {
+  .controller('RepositoryContributorsCtrl', function ($scope, contributors) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
 
-    this.repository = repository;
-    console.log(this.repository);
+    $scope.contributors = contributors;
   });

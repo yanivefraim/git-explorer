@@ -1,4 +1,8 @@
-<h1>Repository: {{repositoryDetails.repository.name}}</h1>
-<div>Full Name: {{repositoryDetails.repository.full_name}}</div>
-<div>Description: {{repositoryDetails.repository.description}}</div>
-<div>URL: <a href="{{repositoryDetails.repository.html_url}}">{{repositoryDetails.repository.html_url}}</a></div>
+<div class="panel panel-primary">
+  <div class="panel-heading">{{repository.name}} ({{repository.full_name}})</div>
+  <div class="panel-body">
+    <div>{{repository.description}}</div>
+    <div>URL: <a href="{{repository.html_url}}">{{repository.html_url}}</a></div>
+
+  </div>
+</div>

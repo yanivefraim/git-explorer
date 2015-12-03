@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body>
+    <form action="https://github.com/login/oauth/access_token" method="post">
+      <input type="hidden" name="client_id" value="18793c9049f0ec2acc4a" />
+      <input type="hidden" name="client_secret" value="b54830850ba8ccf465e838c2cadc7ab4f851957f" />
+      <input type="hidden" name="code" class="code"/>
+    </form>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script>
+      function getParameterByName(name) {
+          name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+          var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+              results = regex.exec(location.search);
+          return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+      }
+
+      var code = getParameterByName('code');
+
+      $('.code').val(code);
+      $('form').submit();
+      // $.ajax({
+      //   url: 'https://github.com/login/oauth/access_token',
+      //   context: {client_id: '18793c9049f0ec2acc4a', client_secret: 'b54830850ba8ccf465e838c2cadc7ab4f851957f', code: code},
+
+      // }).done(function(response) {
+      //   console.log(response);
+      // });
+
+    </script>
+  </body>
