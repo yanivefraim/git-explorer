@@ -39,5 +39,14 @@ angular.module('githubExplorerApp')
         cache: true
       });
     };
+
+    dataService.getContent = function (owner, name) {
+      var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/contents')({owner: owner, name: name });
+      return $http({
+        url: url,
+        method: 'GET',
+        cache: true
+      });
+    };
     return dataService;
   });

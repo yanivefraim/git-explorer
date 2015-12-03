@@ -70,6 +70,21 @@ angular
             });
           }
         }
+      })
+      .state('content', {
+        parent: 'repository',
+        url: '/content',
+        templateUrl: 'views/repository-content.html',
+        controller: 'RepositoryContentCtrl',
+        //controllerAs: 'repositoryDetails',
+        resolve: {
+          content: function(dataService, $stateParams) {
+            return dataService.getContent($stateParams.login, $stateParams.fullName).then(function(response) {
+                console.log(response.data);
+                return response.data;
+            });
+          }
+        }
       });
 
   });
