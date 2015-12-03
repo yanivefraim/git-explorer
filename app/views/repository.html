@@ -11,13 +11,13 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
       <ul class="nav navbar-nav">
-        <li class="active">
+        <li ng-class="{active: isActive('details')}">
           <a href="#/repository/{{repository.full_name.split('/')[0]}}/{{repository.full_name.split('/')[1]}}/details">Details</a>
         </li>
-        <li>
+        <li ng-class="{active: isActive('contributors')}">
          <a href="#/repository/{{repository.full_name.split('/')[0]}}/{{repository.full_name.split('/')[1]}}/contributors">Contributors</a>
         </li>
-        <li>
+        <li ng-class="{active: isActive('content')}">
           <a href="#/repository/{{repository.full_name.split('/')[0]}}/{{repository.full_name.split('/')[1]}}/content">Files</a>
         </li>
       </ul>

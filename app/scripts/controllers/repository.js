@@ -8,7 +8,7 @@
  * Controller of the githubExplorerApp
  */
 angular.module('githubExplorerApp')
-  .controller('ReposirotyCtrl', function ($scope, repository) {
+  .controller('ReposirotyCtrl', function ($scope, $location, repository) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -16,4 +16,9 @@ angular.module('githubExplorerApp')
     ];
 
     $scope.repository = repository;
+
+     $scope.isActive = function (viewLocation) {
+      console.log($location.path().split('/')[$location.path().split('/').length-1]);
+        return viewLocation === $location.path().split('/')[$location.path().split('/').length-1];
+    };
   });
