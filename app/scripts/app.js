@@ -15,33 +15,29 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.router'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/main');
+    $stateProvider
+      .state('main', {
+        url:'/main',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/repository/:login/:fullName/details', {
+      .state('repository', {
+        url: '/repository/:login/:fullName',
         templateUrl: 'views/repository-details.html',
         controller: 'ReposirotyDetailsCtrl',
         controllerAs: 'repositoryDetails',
         resolve: {
-          repository: function(dataService, $route) {
-            return dataService.getRepository($route.current.params.login, $route.current.params.fullName).then(function(response) {
+          repository: function(dataService, $stateParams) {
+            return dataService.getRepository($stateParams.login, $stateParams.fullName).then(function(response) {
                 return response.data;
             });
           }
         }
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
   });
