@@ -1,4 +1,6 @@
-<nav class="navbar navbar-inverse">
+<a ng-if="!userData" href="https://github.com/login/oauth/authorize?client_id=18793c9049f0ec2acc4a">login</a>
+<div ng-if="userData" style="position: absolute;top: 20px; right: 20px;"><span style="padding: 10px;">Hello {{userData.name}}</span><img src="{{userData.avatar_url}}" style="width: 60px; height: 60px;padding: 10px;" /></div>
+<nav style="margin-top: 60px;" class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
@@ -24,8 +26,10 @@
           <a href="#/repository/{{repository.full_name.split('/')[0]}}/{{repository.full_name.split('/')[1]}}/issues">Issues</a>
         </li>
       </ul>
+      <span ng-if="isOwner(repository.full_name)" style="position: absolute;right: 10px; top: 10px; color: white;">Owner</span>
     </div>
   </div>
+
 </nav>
 </div>
 <div class="container" style="padding: 0;">

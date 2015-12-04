@@ -22,7 +22,7 @@ angular
   .config(function (localStorageServiceProvider) {
     localStorageServiceProvider
         .setPrefix('githubExplorer')
-        .setStorageType('sessionStorage')
+        .setStorageType('localStorage')
         .setNotify(true, true)
   })
   .config(function ($stateProvider, $urlRouterProvider) {
@@ -127,6 +127,12 @@ angular
             });
           }
         }
+      })
+      .state('issues.new', {
+        parent: 'repository',
+        url: '/issues/new',
+        templateUrl: 'views/repository-issues-new.html',
+        controller: 'RepositoryIssuesNewCtrl'
       });
 
   });

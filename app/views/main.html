@@ -1,5 +1,6 @@
-<a href="https://github.com/login/oauth/authorize?client_id=18793c9049f0ec2acc4a">login</a>
-<div class="input-group input-group-lg">
+<a ng-if="!userData" href="https://github.com/login/oauth/authorize?client_id=18793c9049f0ec2acc4a">login</a>
+<div ng-if="userData" style="position: absolute;top: 20px; right: 20px;"><span style="padding: 10px;">Hello {{userData.name}}</span><img src="{{userData.avatar_url}}" style="width: 60px; height: 60px;padding: 10px;" /></div>
+<div style="margin-top: 60px;" class="input-group input-group-lg">
   <span class="input-group-addon" id="sizing-addon1"></span>
   <input type="text" ng-model="main.search" ng-model-options="{ debounce: 500 }" class="form-control" placeholder="Search a repository" aria-describedby="sizing-addon1">
 </div>

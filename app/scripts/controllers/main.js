@@ -8,7 +8,7 @@
  * Controller of the githubExplorerApp
  */
 angular.module('githubExplorerApp')
-  .controller('MainCtrl', function ($scope, dataService) {
+  .controller('MainCtrl', function ($scope, dataService, localStorageService, $rootScope) {
     var that = this;
     this.awesomeThings = [
       'HTML5 Boilerplate',
@@ -24,4 +24,26 @@ angular.module('githubExplorerApp')
               });
       }
     });
+
+    if(localStorageService.get('githubKey')) {
+
+      if(!localStorageService.get('userData')) {
+        dataService.getAuthenticatedUserData()
+        .then(function(response) {
+          localStorageService.set('userData', response.data);
+          $scope.userData = localStorageService.get('userData');
+        });
+      }
+
+      if(!localStorageService.get('userRepositories')) {
+        dataService.getAuthenticatedUserRepositories()
+        .then(function(response) {
+          localStorageService.set('userRepositories', response.data);
+          $scope.userRepositories = localStorageService.get('userRepositories');
+        });
+      }
+    }
+
+      $scope.userData = localStorageService.get('userData');
+      $scope.userRepositories = localStorageService.get('userRepositories');
   });

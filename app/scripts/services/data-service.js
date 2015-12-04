@@ -80,7 +80,25 @@ angular.module('githubExplorerApp')
       });
     };
 
-    dataService.getGitHubToken = function () {
+    dataService.getAuthenticatedUserData = function () {
+      var url = 'https://api.github.com/user' + accesstoken2;
+      return $http({
+        url: url,
+        method: 'GET',
+        cache: true
+      });
+    };
+
+    dataService.getAuthenticatedUserRepositories = function () {
+      var url = 'https://api.github.com/user/repos' + accesstoken2;
+      return $http({
+        url: url,
+        method: 'GET',
+        cache: true
+      });
+    };
+
+    dataService.getGitHubToken = function () { //TODO: refactor the whole process
       var deferred = $q.defer();
       function getParameterByName(name) {
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
