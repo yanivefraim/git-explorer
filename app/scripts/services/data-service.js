@@ -62,23 +62,35 @@ angular.module('githubExplorerApp')
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
       }
 
-      var code = getParameterByName('code');
 
-      if(code) {
-        $.ajax({
-          url: 'http://localhost:9999/authenticate/' + code, //TODO: move this to Heroku!!
-          method: 'GET'
-        }).then(function(response) {
-          localStorageService.set('githubKey', response.token);
-          githubKey = localStorageService.get('githubKey');
 
-          if (githubKey) {
-            accesstoken1 += "&access_token=" + githubKey;
-            accesstoken2 += "?access_token=" + githubKey;
-          }
+      if(!localStorageService.get('githubKey')) {
+        var code = getParameterByName('code');
+        if(code) {
+          $.ajax({
+            url: 'http://localhost:9999/authenticate/' + code, //TODO: move this to Heroku!!
+            method: 'GET'
+          }).then(function(response) {
+            localStorageService.set('githubKey', response.token);
+            githubKey = localStorageService.get('githubKey');
+
+            if (githubKey) {
+              accesstoken1 += "&access_token=" + githubKey;
+              accesstoken2 += "?access_token=" + githubKey;
+            }
+            deferred.resolve();
+          });
+        } else {
           deferred.resolve();
-        });
+        }
+
       } else {
+        githubKey = localStorageService.get('githubKey');
+
+        if (githubKey) {
+          accesstoken1 += "&access_token=" + githubKey;
+          accesstoken2 += "?access_token=" + githubKey;
+        }
         deferred.resolve();
       }
 
