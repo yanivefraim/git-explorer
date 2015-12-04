@@ -10,13 +10,10 @@
 angular.module('githubExplorerApp')
   .service('dataService', function ($http, $interpolate, localStorageService, $q) {
     var dataService = {};
-    var githubKey = localStorageService.get('githubKey');
+    var githubKey = '';
     var accesstoken1 = '';
     var accesstoken2 = '';
-    if (githubKey) {
-      accesstoken1 += "&access_token=" + githubKey;
-      accesstoken2 += "?access_token=" + githubKey;
-    }
+
     dataService.searchRepositories = function(searchExp) {
       var url = $interpolate('https://api.github.com/search/repositories?q={{search}}+language:js+language:typescript&sort=stars&order=desc'+accesstoken1)({search: searchExp});
       return $http({
@@ -69,10 +66,16 @@ angular.module('githubExplorerApp')
 
       if(code) {
         $.ajax({
-          url: 'http://localhost:9999/authenticate/' + code,
+          url: 'http://localhost:9999/authenticate/' + code, //TODO: move this to Heroku!!
           method: 'GET'
         }).then(function(response) {
           localStorageService.set('githubKey', response.token);
+          githubKey = localStorageService.get('githubKey');
+
+          if (githubKey) {
+            accesstoken1 += "&access_token=" + githubKey;
+            accesstoken2 += "?access_token=" + githubKey;
+          }
           deferred.resolve();
         });
       } else {
