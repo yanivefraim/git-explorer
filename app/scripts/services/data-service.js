@@ -120,8 +120,8 @@ angular.module('githubExplorerApp')
             githubKey = localStorageService.get('githubKey');
 
             if (githubKey) {
-              accesstoken1 += "&access_token=" + githubKey;
-              accesstoken2 += "?access_token=" + githubKey;
+              accesstoken1 = "&access_token=" + githubKey;
+              accesstoken2 = "?access_token=" + githubKey;
             }
             deferred.resolve();
           });
@@ -133,8 +133,8 @@ angular.module('githubExplorerApp')
         githubKey = localStorageService.get('githubKey');
 
         if (githubKey) {
-          accesstoken1 += "&access_token=" + githubKey;
-          accesstoken2 += "?access_token=" + githubKey;
+          accesstoken1 = "&access_token=" + githubKey;
+          accesstoken2 = "?access_token=" + githubKey;
         }
         deferred.resolve();
       }
