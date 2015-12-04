@@ -16,8 +16,15 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.router'
+    'ui.router',
+    'LocalStorageModule'
   ])
+  .config(function (localStorageServiceProvider) {
+    localStorageServiceProvider
+        .setPrefix('githubExplorer')
+        .setStorageType('sessionStorage')
+        .setNotify(true, true)
+  })
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/main');
     $stateProvider
@@ -25,7 +32,12 @@ angular
         url:'/main',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'main',
+        resolve: {
+          githubToken: function (dataService) {
+            return dataService.getGitHubToken();
+          }
+        }
       })
       .state('repository', {
         url: '/repository/:login/:fullName',
