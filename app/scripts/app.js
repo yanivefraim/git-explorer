@@ -97,6 +97,36 @@ angular
             });
           }
         }
+      })
+      .state('issues', {
+        parent: 'repository',
+        url: '/issues',
+        templateUrl: 'views/repository-issues.html',
+        controller: 'RepositoryIssuesCtrl',
+        //controllerAs: 'repositoryDetails',
+        resolve: {
+          issues: function(dataService, $stateParams) {
+            return dataService.getIssues($stateParams.login, $stateParams.fullName).then(function(response) {
+                console.log(response.data);
+                return response.data;
+            });
+          }
+        }
+      })
+      .state('issue', {
+        parent: 'repository',
+        url: '/issue/:number',
+        templateUrl: 'views/repository-issue.html',
+        controller: 'RepositoryIssueCtrl',
+        //controllerAs: 'repositoryDetails',
+        resolve: {
+          issue: function(dataService, $stateParams) {
+            return dataService.getIssue($stateParams.login, $stateParams.fullName, $stateParams.number).then(function(response) {
+                console.log(response.data);
+                return response.data;
+            });
+          }
+        }
       });
 
   });

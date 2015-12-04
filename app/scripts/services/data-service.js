@@ -53,6 +53,24 @@ angular.module('githubExplorerApp')
       });
     };
 
+    dataService.getIssues = function (owner, name) {
+      var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues'+accesstoken2)({owner: owner, name: name });
+      return $http({
+        url: url,
+        method: 'GET',
+        cache: true
+      });
+    };
+
+    dataService.getIssue = function (owner, name, number) {
+      var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues/'+number + accesstoken2)({owner: owner, name: name });
+      return $http({
+        url: url,
+        method: 'GET',
+        cache: true
+      });
+    };
+
     dataService.getGitHubToken = function () {
       var deferred = $q.defer();
       function getParameterByName(name) {

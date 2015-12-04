@@ -20,6 +20,9 @@
         <li ng-class="{active: isActive('content')}">
           <a href="#/repository/{{repository.full_name.split('/')[0]}}/{{repository.full_name.split('/')[1]}}/content">Files</a>
         </li>
+        <li ng-class="{active: isActive('issues')}">
+          <a href="#/repository/{{repository.full_name.split('/')[0]}}/{{repository.full_name.split('/')[1]}}/issues">Issues</a>
+        </li>
       </ul>
     </div>
   </div>
