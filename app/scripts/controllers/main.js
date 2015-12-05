@@ -44,6 +44,6 @@ angular.module('githubExplorerApp')
       }
     }
 
-      $scope.userData = localStorageService.get('userData');
-      $scope.userRepositories = localStorageService.get('userRepositories');
+    $scope.userData = localStorageService.get('userData');
+    $scope.userRepositories = localStorageService.get('userRepositories');
   });

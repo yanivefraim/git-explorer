@@ -89,3 +89,8 @@ body {
     border-bottom: 0;
   }
 }
+
+.repo-star {
+  cursor: pointer;
+  position: absolute; right: 10px;top: 10px; font-size: 18px;
+}

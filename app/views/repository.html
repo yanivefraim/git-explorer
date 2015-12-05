@@ -1,38 +1,23 @@
-<a ng-if="!userData" href="https://github.com/login/oauth/authorize?client_id=18793c9049f0ec2acc4a">login</a>
-<div ng-if="userData" style="position: absolute;top: 20px; right: 20px;"><span style="padding: 10px;">Hello {{userData.name}}</span><img src="{{userData.avatar_url}}" style="width: 60px; height: 60px;padding: 10px;" /></div>
-<nav style="margin-top: 60px;" class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Github Explorer</a>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
-      <ul class="nav navbar-nav">
-        <li ng-class="{active: isActive('details')}">
-          <a href="#/repository/{{repository.full_name.split('/')[0]}}/{{repository.full_name.split('/')[1]}}/details">Details</a>
-        </li>
-        <li ng-class="{active: isActive('contributors')}">
-         <a href="#/repository/{{repository.full_name.split('/')[0]}}/{{repository.full_name.split('/')[1]}}/contributors">Contributors</a>
-        </li>
-        <li ng-class="{active: isActive('content')}">
-          <a href="#/repository/{{repository.full_name.split('/')[0]}}/{{repository.full_name.split('/')[1]}}/content">Files</a>
-        </li>
-        <li ng-class="{active: isActive('issues')}">
-          <a href="#/repository/{{repository.full_name.split('/')[0]}}/{{repository.full_name.split('/')[1]}}/issues">Issues</a>
-        </li>
-      </ul>
-      <span ng-if="isOwner(repository.full_name)" style="position: absolute;right: 10px; top: 10px; color: white;">Owner</span>
-    </div>
-  </div>
+<a ng-if="!userData" href="https://github.com/login/oauth/authorize?client_id=18793c9049f0ec2acc4a" style="position: absolute;top: -2px; right: 20px;padding: 10px;">login</a>
+<div ng-if="userData" style="position: absolute;top: -2px; right: 20px;"><span style="padding: 10px;">Hello {{userData.name}}</span><img src="{{userData.avatar_url}}" style="width: 60px; height: 60px;padding: 10px;" /></div>
 
-</nav>
+<div style="width: 25%; display: inline-block;vertical-align: top;border: 1px solid #337ab7;border-radius: 4px;margin-right: 10px;">
+  <ul class="nav nav-pills nav-stacked">
+    <li ng-class="{active: isActive('details')}">
+      <a href="#/repository/{{repository.full_name.split('/')[0]}}/{{repository.full_name.split('/')[1]}}/details">Details</a>
+    </li>
+    <li ng-class="{active: isActive('contributors')}">
+     <a href="#/repository/{{repository.full_name.split('/')[0]}}/{{repository.full_name.split('/')[1]}}/contributors">Contributors</a>
+    </li>
+    <li ng-class="{active: isActive('content')}">
+      <a href="#/repository/{{repository.full_name.split('/')[0]}}/{{repository.full_name.split('/')[1]}}/content">Files</a>
+    </li>
+    <li ng-class="{active: isActive('issues')}">
+      <a href="#/repository/{{repository.full_name.split('/')[0]}}/{{repository.full_name.split('/')[1]}}/issues">Issues</a>
+    </li>
+  </ul>
 </div>
-<div class="container" style="padding: 0;">
+<div class="container" style="padding: 0;width: 70%; display: inline-block;vertical-align: top;">
   <div ui-view=""></div>
 </div>
 

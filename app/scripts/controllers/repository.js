@@ -8,7 +8,7 @@
  * Controller of the githubExplorerApp
  */
 angular.module('githubExplorerApp')
-  .controller('ReposirotyCtrl', function ($scope, $location, repository, localStorageService, dataService) {
+  .controller('ReposirotyCtrl', function ($scope, $location, repository, localStorageService) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -17,10 +17,8 @@ angular.module('githubExplorerApp')
 
     $scope.isOwner = function(fullName) {
       var filteredArray = $scope.userRepositories.filter(function (repository){
-        console.log('$scope.repository.full_name', repository.full_name, fullName, repository.full_name === fullName);
         return repository.full_name === fullName;
       });
-      console.log('filteredArray', filteredArray);
       return (filteredArray.length > 0);
     };
 

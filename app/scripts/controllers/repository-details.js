@@ -8,11 +8,46 @@
  * Controller of the githubExplorerApp
  */
 angular.module('githubExplorerApp')
-  .controller('RepositoryDetailsCtrl', function () {
+  .controller('RepositoryDetailsCtrl', function ($scope, dataService) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+
+    var isStarred = false;
+    var starring = false;
+    dataService.isRepositoryStarred($scope.repository.full_name)
+    .then(function (response) {
+      isStarred = true;
+    }, function (response) {
+      isStarred = false;
+    });
+
+    $scope.star = function () {
+      if(starring) {
+        return;
+      }
+      isStarred = !isStarred;
+      starring = true;
+      if (!isStarred) {
+        dataService.starRepository($scope.repository.full_name).then(function () {
+          starring = false;
+        }, function () {
+          isStarred = !isStarred;
+        });
+      } else {
+        dataService.unStarRepository($scope.repository.full_name).then(function () {
+
+          starring = false;
+        }, function () {
+          isStarred = !isStarred;
+        });
+      }
+    };
+
+    $scope.isRepositoryStarred = function () {
+      return isStarred;
+    };
     //this.repository = repository;
   });

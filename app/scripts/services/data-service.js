@@ -57,8 +57,7 @@ angular.module('githubExplorerApp')
       var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues'+accesstoken2)({owner: owner, name: name });
       return $http({
         url: url,
-        method: 'GET',
-        cache: true
+        method: 'GET'
       });
     };
 
@@ -66,8 +65,7 @@ angular.module('githubExplorerApp')
       var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues/'+number + accesstoken2)({owner: owner, name: name });
       return $http({
         url: url,
-        method: 'GET',
-        cache: true
+        method: 'GET'
       });
     };
 
@@ -75,8 +73,7 @@ angular.module('githubExplorerApp')
       var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues/'+ number + '/comments' + accesstoken2)({owner: owner, name: name });
       return $http({
         url: url,
-        method: 'GET',
-        cache: true
+        method: 'GET'
       });
     };
 
@@ -84,8 +81,7 @@ angular.module('githubExplorerApp')
       var url = 'https://api.github.com/user' + accesstoken2;
       return $http({
         url: url,
-        method: 'GET',
-        cache: true
+        method: 'GET'
       });
     };
 
@@ -95,6 +91,42 @@ angular.module('githubExplorerApp')
         url: url,
         method: 'GET',
         cache: true
+      });
+    };
+
+    dataService.getAuthenticatedUserStarredRepositories = function () {
+      var url = 'https://api.github.com/user/starred' + accesstoken2;
+      return $http({
+        url: url,
+        method: 'GET',
+        cache: true
+      });
+    };
+
+    dataService.isRepositoryStarred = function (fullName) {
+      var url = 'https://api.github.com/user/starred/' + fullName + accesstoken2;
+      return $http({
+        url: url,
+        method: 'GET'
+      });
+    };
+
+    dataService.starRepository = function (fullName) {
+      var url = 'https://api.github.com/user/starred/' + fullName + accesstoken2;
+      return $http({
+        url: url,
+        // headers: {
+        //   "Content-Length": 0
+        // },
+        method: 'PUT'
+      });
+    };
+
+    dataService.unStarRepository = function (fullName) {
+      var url = 'https://api.github.com/user/starred/' + fullName + accesstoken2;
+      return $http({
+        url: url,
+        method: 'DELETE'
       });
     };
 

@@ -1,5 +1,5 @@
 <div class="panel panel-primary">
-  <div class="panel-heading">{{repository.name}} ({{repository.full_name}})</div>
+  <div class="panel-heading" style="position: relative;">{{repository.name}} ({{repository.full_name}})<span ng-if="userData" ng-class="{'glyphicon glyphicon-star-empty': !isRepositoryStarred(), 'glyphicon glyphicon-star': isRepositoryStarred()}" class="repo-star glyphicon" ng-click="star()"></span></div>
   <div class="panel-body">
     <div>{{repository.description}}</div>
     <div>URL: <a href="{{repository.html_url}}">{{repository.html_url}}</a></div>
