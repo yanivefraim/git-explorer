@@ -11,122 +11,170 @@ angular.module('githubExplorerApp')
   .service('dataService', function ($http, $interpolate, localStorageService, $q) {
     var dataService = {};
     var githubKey = '';
-    var accesstoken1 = '';
-    var accesstoken2 = '';
+
+    dataService.getAccessToken = function (prefix) {
+      return this.getGitHubToken().then(function(response) {
+        var githubKey = response;
+        var accesstoken = '';
+        if(githubKey !== '') {
+          accesstoken = prefix + 'access_token=' + githubKey;
+        }
+        return accesstoken;
+      });
+      //var githubKey = this.getGitHubToken();
+    };
 
     dataService.searchRepositories = function(searchExp) {
-      var url = $interpolate('https://api.github.com/search/repositories?q={{search}}+language:js+language:typescript&sort=stars&order=desc'+accesstoken1)({search: searchExp});
-      return $http({
-        url: url,
-        method: 'GET',
-        cache: true
+      return this.getAccessToken('&')
+      .then(function(accesstoken) {
+        var url = $interpolate('https://api.github.com/search/repositories?q={{search}}+language:js+language:typescript&sort=stars&order=desc'+accesstoken)({search: searchExp});
+        return $http({
+          url: url,
+          method: 'GET',
+          cache: true
+        });
       }).then(function(response) {
         return response.data;
       });
-
     };
 
     dataService.getRepository = function (owner, name) {
-      var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}'+ accesstoken2)({owner: owner, name: name });
-      return $http({
-        url: url,
-        method: 'GET',
-        cache: true
+      return this.getAccessToken('?')
+      .then(function(accesstoken) {
+        var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}'+ accesstoken)({owner: owner, name: name });
+        return $http({
+          url: url,
+          method: 'GET',
+          cache: true
+        });
       });
     };
 
     dataService.getContributors = function (owner, name) {
-      var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/contributors'+accesstoken2)({owner: owner, name: name });
-      return $http({
-        url: url,
-        method: 'GET',
-        cache: true
+      return this.getAccessToken('?')
+      .then(function(accesstoken) {
+        var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/contributors'+accesstoken)({owner: owner, name: name });
+        return $http({
+          url: url,
+          method: 'GET',
+          cache: true
+        });
       });
     };
 
     dataService.getContent = function (owner, name) {
-      var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/contents'+accesstoken2)({owner: owner, name: name });
-      return $http({
-        url: url,
-        method: 'GET',
-        cache: true
+      return this.getAccessToken('?')
+      .then(function(accesstoken) {
+        var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/contents'+accesstoken)({owner: owner, name: name });
+        return $http({
+          url: url,
+          method: 'GET',
+          cache: true
+        });
       });
     };
 
     dataService.getIssues = function (owner, name) {
-      var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues'+accesstoken2)({owner: owner, name: name });
-      return $http({
-        url: url,
-        method: 'GET'
+      return this.getAccessToken('?')
+      .then(function(accesstoken) {
+        var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues'+accesstoken)({owner: owner, name: name });
+        return $http({
+          url: url,
+          method: 'GET'
+        });
       });
     };
 
     dataService.getIssue = function (owner, name, number) {
-      var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues/'+number + accesstoken2)({owner: owner, name: name });
-      return $http({
-        url: url,
-        method: 'GET'
+      return this.getAccessToken('?')
+      .then(function(accesstoken) {
+        var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues/'+number + accesstoken)({owner: owner, name: name });
+        return $http({
+          url: url,
+          method: 'GET'
+        });
       });
     };
 
     dataService.getIssueComment = function (owner, name, number) {
-      var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues/'+ number + '/comments' + accesstoken2)({owner: owner, name: name });
-      return $http({
-        url: url,
-        method: 'GET'
+      return this.getAccessToken('?')
+      .then(function(accesstoken) {
+        var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues/'+ number + '/comments' + accesstoken)({owner: owner, name: name });
+        return $http({
+          url: url,
+          method: 'GET'
+        });
       });
     };
 
     dataService.getAuthenticatedUserData = function () {
-      var url = 'https://api.github.com/user' + accesstoken2;
-      return $http({
-        url: url,
-        method: 'GET'
+      return this.getAccessToken('?')
+      .then(function(accesstoken) {
+        var url = 'https://api.github.com/user' + accesstoken;
+        return $http({
+          url: url,
+          method: 'GET'
+        });
       });
     };
 
     dataService.getAuthenticatedUserRepositories = function () {
-      var url = 'https://api.github.com/user/repos' + accesstoken2;
-      return $http({
-        url: url,
-        method: 'GET',
-        cache: true
+      return this.getAccessToken('?')
+      .then(function(accesstoken) {
+        var url = 'https://api.github.com/user/repos' + accesstoken;
+        return $http({
+          url: url,
+          method: 'GET',
+          cache: true
+        });
       });
     };
 
     dataService.getAuthenticatedUserStarredRepositories = function () {
-      var url = 'https://api.github.com/user/starred' + accesstoken2;
-      return $http({
-        url: url,
-        method: 'GET',
-        cache: true
+      return this.getAccessToken('?')
+      .then(function(accesstoken) {
+        var url = 'https://api.github.com/user/starred' + accesstoken;
+        return $http({
+          url: url,
+          method: 'GET',
+          cache: true
+        });
       });
     };
 
     dataService.isRepositoryStarred = function (fullName) {
-      var url = 'https://api.github.com/user/starred/' + fullName + accesstoken2;
-      return $http({
-        url: url,
-        method: 'GET'
+      return this.getAccessToken('?')
+      .then(function(accesstoken) {
+        var url = 'https://api.github.com/user/starred/' + fullName + accesstoken;
+        return $http({
+          url: url,
+          method: 'GET'
+        });
       });
     };
 
     dataService.starRepository = function (fullName) {
-      var url = 'https://api.github.com/user/starred/' + fullName + accesstoken2;
-      return $http({
-        url: url,
-        // headers: {
-        //   "Content-Length": 0
-        // },
-        method: 'PUT'
+      return this.getAccessToken('?')
+      .then(function(accesstoken) {
+        var url = 'https://api.github.com/user/starred/' + fullName + accesstoken;
+        return $http({
+          url: url,
+          // headers: {
+          //   "Content-Length": 0
+          // },
+          method: 'PUT'
+        });
       });
     };
 
     dataService.unStarRepository = function (fullName) {
-      var url = 'https://api.github.com/user/starred/' + fullName + accesstoken2;
-      return $http({
-        url: url,
-        method: 'DELETE'
+      return this.getAccessToken('?')
+      .then(function(accesstoken) {
+        var url = 'https://api.github.com/user/starred/' + fullName + accesstoken;
+        return $http({
+          url: url,
+          method: 'DELETE'
+        });
       });
     };
 
@@ -139,8 +187,6 @@ angular.module('githubExplorerApp')
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
       }
 
-
-
       if(!localStorageService.get('githubKey')) {
         var code = getParameterByName('code');
         if(code) {
@@ -151,24 +197,16 @@ angular.module('githubExplorerApp')
             localStorageService.set('githubKey', response.token);
             githubKey = localStorageService.get('githubKey');
 
-            if (githubKey) {
-              accesstoken1 = "&access_token=" + githubKey;
-              accesstoken2 = "?access_token=" + githubKey;
-            }
-            deferred.resolve();
+            deferred.resolve(githubKey);
           });
         } else {
-          deferred.resolve();
+          deferred.resolve('');
         }
 
       } else {
         githubKey = localStorageService.get('githubKey');
 
-        if (githubKey) {
-          accesstoken1 = "&access_token=" + githubKey;
-          accesstoken2 = "?access_token=" + githubKey;
-        }
-        deferred.resolve();
+        deferred.resolve(githubKey);
       }
 
       return deferred.promise;

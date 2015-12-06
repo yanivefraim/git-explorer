@@ -15,6 +15,8 @@ angular.module('githubExplorerApp')
       'Karma'
     ];
 
+    console.log('ReposirotyCtrl');
+
     $scope.isOwner = function(fullName) {
       var filteredArray = $scope.userRepositories.filter(function (repository){
         return repository.full_name === fullName;

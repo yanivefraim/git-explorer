@@ -28,7 +28,6 @@ angular.module('githubExplorerApp')
       if(starring) {
         return;
       }
-      isStarred = !isStarred;
       starring = true;
       if (!isStarred) {
         dataService.starRepository($scope.repository.full_name).then(function () {
@@ -44,6 +43,7 @@ angular.module('githubExplorerApp')
           isStarred = !isStarred;
         });
       }
+      isStarred = !isStarred;
     };
 
     $scope.isRepositoryStarred = function () {

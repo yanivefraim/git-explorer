@@ -32,12 +32,7 @@ angular
         url:'/main',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'main',
-        resolve: {
-          githubToken: function (dataService) {
-            return dataService.getGitHubToken();
-          }
-        }
+         controllerAs: 'main'
       })
       .state('repository', {
         url: '/repository/:login/:fullName',
@@ -47,7 +42,7 @@ angular
         resolve: {
           repository: function(dataService, $stateParams) {
             return dataService.getRepository($stateParams.login, $stateParams.fullName).then(function(response) {
-              console.log(response.data);
+              console.log('repository route', response.data);
                 return response.data;
             });
           }
@@ -57,16 +52,7 @@ angular
         parent: 'repository',
         url: '/details',
         templateUrl: 'views/repository-details.html',
-        controller: 'RepositoryDetailsCtrl'//,
-        //controllerAs: 'repositoryDetails',
-        // resolve: {
-        //   repository: function(dataService, $stateParams) {
-        //     return dataService.getRepository($stateParams.login, $stateParams.fullName).then(function(response) {
-        //         console.log(response.data);
-        //         return response.data;
-        //     });
-        //   }
-        // }
+        controller: 'RepositoryDetailsCtrl'
       })
       .state('contributors', {
         parent: 'repository',
