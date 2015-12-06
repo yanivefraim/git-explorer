@@ -17,11 +17,8 @@ angular.module('githubExplorerApp')
 
     console.log('ReposirotyCtrl');
 
-    $scope.isOwner = function(fullName) {
-      var filteredArray = $scope.userRepositories.filter(function (repository){
-        return repository.full_name === fullName;
-      });
-      return (filteredArray.length > 0);
+    $scope.isOwner = function() {
+      return $scope.repository.permissions.admin;
     };
 
     $scope.repository = repository;
@@ -31,5 +28,4 @@ angular.module('githubExplorerApp')
     };
 
     $scope.userData = localStorageService.get('userData');
-    $scope.userRepositories = localStorageService.get('userRepositories');
   });

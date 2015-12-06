@@ -118,18 +118,6 @@ angular.module('githubExplorerApp')
       });
     };
 
-    dataService.getAuthenticatedUserRepositories = function () {
-      return this.getAccessToken('?')
-      .then(function(accesstoken) {
-        var url = 'https://api.github.com/user/repos' + accesstoken;
-        return $http({
-          url: url,
-          method: 'GET',
-          cache: true
-        });
-      });
-    };
-
     dataService.getAuthenticatedUserStarredRepositories = function () {
       return this.getAccessToken('?')
       .then(function(accesstoken) {
