@@ -50,6 +50,19 @@ angular.module('githubExplorerApp')
       });
     };
 
+    dataService.editRepository = function (fullName, repositoryData) {
+      return this.getAccessToken('?')
+      .then(function(accesstoken) {
+        var url = $interpolate('https://api.github.com/repos/{{fullName}}'+ accesstoken)({fullName: fullName });
+        return $http({
+          url: url,
+          method: 'PATCH',
+          data: repositoryData,
+          cache: true
+        });
+      });
+    };
+
     dataService.getContributors = function (owner, name) {
       return this.getAccessToken('?')
       .then(function(accesstoken) {

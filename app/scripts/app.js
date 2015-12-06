@@ -119,6 +119,12 @@ angular
         url: '/issues/new',
         templateUrl: 'views/repository-issues-new.html',
         controller: 'RepositoryIssuesNewCtrl'
+      })
+      .state('edit', {
+        parent: 'repository',
+        url: '/edit',
+        templateUrl: 'views/repository-edit.html',
+        controller: 'RepositoryEditCtrl'
       });
 
   });

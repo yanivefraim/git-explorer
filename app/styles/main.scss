@@ -90,7 +90,20 @@ body {
   }
 }
 
-.repo-star {
+.repo-actions {
   cursor: pointer;
-  position: absolute; right: 10px;top: 10px; font-size: 18px;
+  position: absolute; right: 10px;top: 7px; font-size: 18px;
+
+  > * {
+    margin-left: 10px;
+  }
+
+  a {
+    color: white;
+  }
+
+  .repo-star {
+    top: 3px;
+  }
+
 }
