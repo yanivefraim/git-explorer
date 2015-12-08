@@ -1,5 +1,5 @@
 <div class="panel panel-primary">
-  <div class="panel-heading" style="position: relative;">{{repository.name}} <span class="repo-actions"><a ng-if="isOwner()" href="#/repository/{{repository.full_name.split('/')[0]}}/{{repository.full_name.split('/')[1]}}/edit">(edit)</a><span ng-if="isOwner()" class="badge">admin</span><span ng-if="userData" ng-class="{'glyphicon glyphicon-star-empty': !isRepositoryStarred(), 'glyphicon glyphicon-star': isRepositoryStarred()}" class="glyphicon repo-star" ng-click="star()"></span></span></div>
+  <div class="panel-heading" style="position: relative;">{{repository.name}} <span class="repo-actions"><a style="padding-top: 2px;text-decoration: none;" class="glyphicon glyphicon-edit" ng-if="isOwner()" href="#/repository/{{repository.full_name.split('/')[0]}}/{{repository.full_name.split('/')[1]}}/edit"></a><span ng-if="isOwner()" style="margin-top: -4px" class="badge">admin</span><span ng-if="userData" ng-class="{'glyphicon glyphicon-star-empty': !isRepositoryStarred(), 'glyphicon glyphicon-star': isRepositoryStarred()}" class="glyphicon repo-star" ng-click="star()"></span></span></div>
   <div class="panel-body" style="position: relative;">
     <div>{{repository.description}}</div>
     <div>URL: <a href="{{repository.html_url}}">{{repository.html_url}}</a></div>
