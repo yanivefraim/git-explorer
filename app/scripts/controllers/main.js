@@ -16,11 +16,14 @@ angular.module('githubExplorerApp')
       'Karma'
     ];
 
+    that.recentItems = localStorageService.get('lastItems');
+
     $scope.$watch('main.search', function(newVal, oldVal) {
       if (angular.isDefined(newVal) && newVal !== oldVal) {
 
         dataService.searchRepositories(newVal).then(function(response) {
                 that.items = response.items.slice(0,10);
+                localStorageService.set('lastItems', that.items);
               });
       }
     });

@@ -1,9 +1,11 @@
 <a ng-if="!userData" href="https://github.com/login/oauth/authorize?client_id=18793c9049f0ec2acc4a&scope=public_repo" style="position: absolute;top: -2px; right: 20px;padding: 10px;">login</a>
 <div ng-if="userData" style="position: absolute;top: -2px; right: 20px;"><span style="padding: 10px;">Hello {{userData.name}}</span><img src="{{userData.avatar_url}}" style="width: 60px; height: 60px;padding: 10px;" /></div>
+<h2>Welcome to Github Explorer!</h2>
 <div style="margin-top: 60px;" class="input-group input-group-lg">
   <span class="input-group-addon glyphicon glyphicon-search" id="sizing-addon1"></span>
   <input type="text" ng-model="main.search" ng-model-options="{ debounce: 500 }" class="form-control" placeholder="Search a repository" aria-describedby="sizing-addon1">
 </div>
+
 
 <ul class="list-group">
   <li class="list-group-item" ng-repeat="item in main.items">
@@ -11,3 +13,13 @@
     <a href="#/repository/{{item.full_name.split('/')[0]}}/{{item.full_name.split('/')[1]}}/details">{{item.full_name}}</a>
   </li>
 </ul>
+
+<div ng-if="main.recentItems && !main.items">
+  <h3>Recent items:</h3>
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="item in main.recentItems">
+      <span class="badge">{{item.stargazers_count}}</span>
+      <a href="#/repository/{{item.full_name.split('/')[0]}}/{{item.full_name.split('/')[1]}}/details">{{item.full_name}}</a>
+    </li>
+  </ul>
+</div>
