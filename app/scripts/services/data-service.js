@@ -179,6 +179,17 @@ angular.module('githubExplorerApp')
       });
     };
 
+    dataService.getAuthenticatedUSerProfile = function () {
+      return this.getAccessToken('?')
+      .then(function(accesstoken) {
+        var url = 'https://api.github.com/user' + accesstoken;
+        return $http({
+          url: url,
+          method: 'GET'
+        });
+      });
+    };
+
     dataService.getGitHubToken = function () { //TODO: refactor the whole process
       var deferred = $q.defer();
       function getParameterByName(name) {
