@@ -40,4 +40,8 @@ angular.module('githubExplorerApp')
     }
 
     $scope.userData = localStorageService.get('userData');
+
+    this.logout = function() {
+      localStorageService.clearAll();
+    };
   });

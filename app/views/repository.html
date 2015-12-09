@@ -1,5 +1,9 @@
 <a ng-if="!userData" href="https://github.com/login/oauth/authorize?client_id=18793c9049f0ec2acc4a" style="position: absolute;top: -2px; right: 20px;padding: 10px;">login</a>
-<div ng-if="userData" style="position: absolute;top: -2px; right: 20px;"><span style="padding: 10px;">Hello {{userData.name}}</span><img src="{{userData.avatar_url}}" style="width: 60px; height: 60px;padding: 10px;" /></div>
+<div ng-if="userData" style="position: absolute;top: -2px; right: 20px;">
+  <span style="padding: 10px;">Hello {{userData.name}}</span>
+  <img src="{{userData.avatar_url}}" style="width: 60px; height: 60px;padding: 10px;" />
+  <a ng-if="userData" href class="glyphicon glyphicon-log-out" ng-click="logout()" />
+</div>
 
 <div style="width: 25%; display: inline-block;vertical-align: top;border: 1px solid #337ab7;border-radius: 4px;margin-right: 10px;">
   <ul class="nav nav-pills nav-stacked">

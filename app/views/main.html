@@ -1,5 +1,9 @@
 <a ng-if="!userData" href="https://github.com/login/oauth/authorize?client_id=18793c9049f0ec2acc4a&scope=public_repo" style="position: absolute;top: -2px; right: 20px;padding: 10px;">login</a>
-<div ng-if="userData" style="position: absolute;top: -2px; right: 20px;"><span style="padding: 10px;">Hello {{userData.name}}</span><img src="{{userData.avatar_url}}" style="width: 60px; height: 60px;padding: 10px;" /></div>
+<div ng-if="userData" style="position: absolute;top: -2px; right: 20px;">
+  <span style="padding: 10px;">Hello {{userData.name}}</span>
+  <img src="{{userData.avatar_url}}" style="width: 60px; height: 60px;padding: 10px;" />
+  <a ng-if="userData" href class="glyphicon glyphicon-log-out" ng-click="main.logout()" />
+</div>
 <h2>Welcome to Github Explorer!</h2>
 <div style="margin-top: 60px;" class="input-group input-group-lg">
   <span class="input-group-addon glyphicon glyphicon-search" id="sizing-addon1"></span>
