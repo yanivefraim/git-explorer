@@ -75,6 +75,18 @@ angular.module('githubExplorerApp')
       });
     };
 
+    dataService.getAuthenticatedUserEvents = function (userName) {
+      return this.getAccessToken('?')
+      .then(function(accesstoken) {
+        var url = $interpolate('https://api.github.com/users/{{userName}}/events'+accesstoken)({userName: userName});
+        return $http({
+          url: url,
+          method: 'GET',
+          cache: true
+        });
+      });
+    };
+
     dataService.getContent = function (owner, name) {
       return this.getAccessToken('?')
       .then(function(accesstoken) {

@@ -130,7 +130,6 @@ angular
         url: '/my-profile',
         templateUrl: 'views/my-profile.html',
         controller: 'MyProfileCtrl',
-        controllerAs: 'myProfileCtrl',
         resolve: {
           profile: function(dataService) {
             return dataService.getAuthenticatedUSerProfile().then(function(response) {

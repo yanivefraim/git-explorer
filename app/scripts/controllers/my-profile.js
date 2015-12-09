@@ -8,12 +8,17 @@
  * Controller of the githubExplorerApp
  */
 angular.module('githubExplorerApp')
-  .controller('MyProfileCtrl', function (profile) {
+  .controller('MyProfileCtrl', function ($scope, profile, dataService) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
 
-    this.myProfile = profile;
+    $scope.myProfile = profile;
+
+    dataService.getAuthenticatedUserEvents($scope.myProfile.login).then(function(response) {
+      $scope.userEvents = response.data;
+    });
+
   });

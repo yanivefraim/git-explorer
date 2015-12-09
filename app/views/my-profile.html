@@ -1,11 +1,28 @@
 <div class="panel panel-primary">
-  <div class="panel-heading">{{myProfileCtrl.myProfile.name}}
+  <div class="panel-heading">{{myProfile.name}}
   </div>
   <div class="panel-body" style="position: relative;">
-    <div><label>Company:</label> {{myProfileCtrl.myProfile.company}}</div>
-    <div><label>Bog:</label> {{myProfileCtrl.myProfile.blog}}</div>
-    <div><label>Email:</label> {{myProfileCtrl.myProfile.email}}</div>
-    <div><label>Location:</label> {{myProfileCtrl.myProfile.location}}</div>
+    <div><label>Company:</label> {{myProfile.company}}</div>
+    <div><label>Blog:</label> {{myProfile.blog}}</div>
+    <div><label>Email:</label> {{myProfile.email}}</div>
+    <div><label>Location:</label> {{myProfile.location}}</div>
   </div>
 </div>
 
+<h3>Last Activity:</h3>
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>date</th>
+      <th>Repository</th>
+      <th>activity type</th>
+    </tr>
+  </thead>
+  <tbody ng-repeat="event in userEvents">
+    <tr>
+      <td>{{event.created_at | date : format : timezone}}</td>
+      <td>{{event.repo.name}}</td>
+      <td>{{event.type.replace('Event', '')}}</td>
+    </tr>
+  </tbody>
+</table>
