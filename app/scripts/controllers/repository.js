@@ -26,10 +26,4 @@ angular.module('githubExplorerApp')
     $scope.isActive = function (viewLocation) {
       return viewLocation === $location.path().split('/')[$location.path().split('/').length-1];
     };
-
-    // $scope.userData = localStorageService.get('userData');
-
-    // $scope.logout = function() {
-    //   localStorageService.clearAll();
-    // };
   });

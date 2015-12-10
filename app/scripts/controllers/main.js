@@ -27,21 +27,4 @@ angular.module('githubExplorerApp')
               });
       }
     });
-
-    // if(localStorageService.get('githubKey')) {
-
-    //   if(!localStorageService.get('userData')) {
-    //     dataService.getAuthenticatedUserData()
-    //     .then(function(response) {
-    //       localStorageService.set('userData', response.data);
-    //       $scope.userData = localStorageService.get('userData');
-    //     });
-    //   }
-    // }
-
-    // $scope.userData = localStorageService.get('userData');
-
-    // this.logout = function() {
-    //   localStorageService.clearAll();
-    // };
   });
