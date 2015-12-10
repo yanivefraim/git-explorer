@@ -20,7 +20,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header" style="border-bottom: 0;">
+    <div class="header" style="border-bottom: 0;" ng-controller="HeaderCtrl">
       <div class="navbar navbar-default" role="navigation">
         <div class="container">
           <div class="navbar-header">
@@ -33,6 +33,7 @@
             </button>
 
             <a class="navbar-brand" href="#/">Github Explorer</a>
+
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
@@ -42,13 +43,19 @@
               <li><a ng-href="#/about">My Stars (144)</a></li>
               <li><a ng-href="#/my-profile">My Profile</a></li>
             </ul>
+             <a ng-if="!userData" href="https://github.com/login/oauth/authorize?client_id=18793c9049f0ec2acc4a&scope=public_repo" style="position: absolute;top: -2px; right: 20px;padding: 10px;">login</a>
+            <div ng-if="userData" style="position: absolute;top: -2px; right: 20px;">
+              <span style="padding: 10px;">Hello {{userData.name}}</span>
+              <img src="{{userData.avatar_url}}" style="width: 60px; height: 60px;padding: 10px;" />
+              <a ng-if="userData" href class="glyphicon glyphicon-log-out" ng-click="logout()"></a>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="container">
-    <div ui-view=""></div>
+      <div ui-view=""></div>
     </div>
 
     <div class="footer">
@@ -99,6 +106,7 @@
         <script src="scripts/controllers/repository-issues-new.js"></script>
         <script src="scripts/controllers/repository-edit.js"></script>
         <script src="scripts/controllers/my-profile.js"></script>
+        <script src="scripts/controllers/header.js"></script>
         <!-- endbuild -->
 </body>
 </html>

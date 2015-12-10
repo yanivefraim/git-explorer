@@ -13,15 +13,15 @@ angular.module('githubExplorerApp')
     var githubKey = '';
 
     dataService.getAccessToken = function (prefix) {
-      return this.getGitHubToken().then(function(response) {
+      return this.getGitHubToken()
+      .then(function(response) {
         var githubKey = response;
         var accesstoken = '';
-        if(githubKey !== '') {
+        if(githubKey !== '' && githubKey !== null) {
           accesstoken = prefix + 'access_token=' + githubKey;
         }
         return accesstoken;
       });
-      //var githubKey = this.getGitHubToken();
     };
 
     dataService.searchRepositories = function(searchExp) {

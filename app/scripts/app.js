@@ -32,7 +32,12 @@ angular
         url:'/main',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-         controllerAs: 'main'
+        controllerAs: 'main',
+        resolve: {
+         authKey: function(dataService) {
+           return dataService.getGitHubToken();
+         }
+        }
       })
       .state('repository', {
         url: '/repository/:login/:fullName',
@@ -139,5 +144,4 @@ angular
           }
         }
       });
-
   });

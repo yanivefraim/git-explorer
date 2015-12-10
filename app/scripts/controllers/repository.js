@@ -27,9 +27,9 @@ angular.module('githubExplorerApp')
       return viewLocation === $location.path().split('/')[$location.path().split('/').length-1];
     };
 
-    $scope.userData = localStorageService.get('userData');
+    // $scope.userData = localStorageService.get('userData');
 
-    $scope.logout = function() {
-      localStorageService.clearAll();
-    };
+    // $scope.logout = function() {
+    //   localStorageService.clearAll();
+    // };
   });
