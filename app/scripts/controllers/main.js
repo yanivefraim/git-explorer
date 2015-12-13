@@ -27,4 +27,6 @@ angular.module('githubExplorerApp')
               });
       }
     });
+
+    $scope.userData = localStorageService.get('userData');
   });
