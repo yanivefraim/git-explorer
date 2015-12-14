@@ -1,4 +1,4 @@
-// Generated on 2015-12-03 using generator-angular 0.14.0
+// Generated on 2015-12-14 using generator-angular 0.14.0
 'use strict';
 
 // # Globbing
@@ -37,16 +37,13 @@ module.exports = function (grunt) {
         files: ['bower.json'],
         tasks: ['wiredep']
       },
-      js: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
-        tasks: ['newer:jshint:all', 'newer:jscs:all'],
-        options: {
-          livereload: '<%= connect.options.livereload %>'
-        }
+      typescript: {
+        files: ['<%= yeoman.app %>/scripts/{,*/}*.ts'],
+        tasks: ['typescript:base']
       },
-      jsTest: {
-        files: ['test/spec/{,*/}*.js'],
-        tasks: ['newer:jshint:test', 'newer:jscs:test', 'karma']
+      typescriptTest: {
+        files: ['test/spec/{,*/}*.ts'],
+        tasks: ['typescript:test', 'karma']
       },
       compass: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
@@ -62,6 +59,7 @@ module.exports = function (grunt) {
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
+          '.tmp/scripts/{,*/}*.js',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
@@ -126,15 +124,8 @@ module.exports = function (grunt) {
       },
       all: {
         src: [
-          'Gruntfile.js',
-          '<%= yeoman.app %>/scripts/{,*/}*.js'
+          'Gruntfile.js'
         ]
-      },
-      test: {
-        options: {
-          jshintrc: 'test/.jshintrc'
-        },
-        src: ['test/spec/{,*/}*.js']
       }
     },
 
@@ -225,6 +216,40 @@ module.exports = function (grunt) {
         ignorePath: /(\.\.\/){1,2}bower_components\//
       }
     }, 
+    // Compiles TypeScript to JavaScript
+    typescript: {
+      base: {
+        src: ['<%= yeoman.app %>/scripts/{,*/}*.ts'],
+          dest: '.tmp/scripts',
+          options: {
+          module: 'amd', //or commonjs
+            target: 'es5', //or es3
+            'base_path': '<%= yeoman.app %>/scripts', //quoting base_path to get around jshint warning.
+            sourcemap: true,
+            declaration: true
+        }
+      },
+      test: {
+        src: ['test/spec/{,*/}*.ts', 'test/e2e/{,*/}*.ts'],
+          dest: '.tmp/spec',
+          options: {
+          module: 'amd', //or commonjs
+            target: 'es5', //or es3
+            sourcemap: true,
+            declaration: true
+        }
+      }
+    },
+    tsd: {
+      refresh: {
+        options: {
+          // execute a command
+          command: 'reinstall',
+          config: 'tsd.json'
+        }
+      }
+    },
+    
 
     // Compiles Sass to CSS and generates necessary files if requested
     compass: {
@@ -438,12 +463,15 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
+        'typescript:base',
         'compass:server'
       ],
       test: [
+        'typescript',
         'compass'
       ],
       dist: [
+        'typescript',
         'compass:dist',
         'imagemin',
         'svgmin'
@@ -468,6 +496,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
+      'tsd:refresh',
       'concurrent:server',
       'postcss:server',
       'connect:livereload',
@@ -483,6 +512,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'clean:server',
     'wiredep',
+    'tsd:refresh',
     'concurrent:test',
     'postcss',
     'connect:test',
@@ -492,6 +522,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'wiredep',
+    'tsd:refresh',
     'useminPrepare',
     'concurrent:dist',
     'postcss',
