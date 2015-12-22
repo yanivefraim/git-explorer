@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="githubExplorerApp">
+  <body>
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -76,8 +76,17 @@
        ga('send', 'pageview');
     </script>
 
+
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
+
+    <script src="/node_modules/angular2/bundles/angular2-polyfills.min.js"></script>
+    <script src="/node_modules/systemjs/dist/system.src.js"></script>
+    <script src="/node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="/node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="/node_modules/angular2/bundles/upgrade.dev.js"></script>
+    <script src="/node_modules/angular2/bundles/http.dev.js"></script>
+    <script src="/node_modules/angular2/bundles/router.dev.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
@@ -108,5 +117,32 @@
         <script src="scripts/controllers/my-profile.js"></script>
         <script src="scripts/controllers/header.js"></script>
         <!-- endbuild -->
+
+        <script>
+    System.config({
+      packages: {
+        app: {
+          format: 'cjs',
+          defaultExtension: 'js'
+        }
+      }
+
+    });
+
+    System.config({
+      meta: {
+        // meaning [baseURL]/vendor/angular.js when no other rules are present
+        // path is normalized using map and paths configuration
+        'angular2': {
+          format: 'cjs', // load this module as a global
+          exports: 'angular2' // the global property to take as the module value
+
+        }
+      }
+    });
+
+
+    System.import('scripts/bootstrap.js').then(null, console.error.bind(console));
+    </script>
 </body>
 </html>
