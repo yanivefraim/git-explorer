@@ -79,7 +79,6 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-
     <script src="/node_modules/angular2/bundles/angular2-polyfills.min.js"></script>
     <script src="/node_modules/systemjs/dist/system.src.js"></script>
     <script src="/node_modules/rxjs/bundles/Rx.js"></script>
@@ -101,48 +100,35 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/services/data-service.js"></script>
-        <script src="scripts/controllers/repository-details.js"></script>
-        <script src="scripts/controllers/repository.js"></script>
-        <script src="scripts/controllers/repository-contributors.js"></script>
-        <script src="scripts/controllers/repository-content.js"></script>
-        <script src="scripts/controllers/repository-issues.js"></script>
-        <script src="scripts/controllers/repository-issue.js"></script>
-        <script src="scripts/controllers/repository-issues-new.js"></script>
-        <script src="scripts/controllers/repository-edit.js"></script>
-        <script src="scripts/controllers/my-profile.js"></script>
-        <script src="scripts/controllers/header.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/services/data-service.js"></script>
+    <script src="scripts/controllers/repository-details.js"></script>
+    <script src="scripts/controllers/repository.js"></script>
+    <script src="scripts/controllers/repository-contributors.js"></script>
+    <script src="scripts/controllers/repository-content.js"></script>
+    <script src="scripts/controllers/repository-issues.js"></script>
+    <script src="scripts/controllers/repository-issue.js"></script>
+    <script src="scripts/controllers/repository-issues-new.js"></script>
+    <script src="scripts/controllers/repository-edit.js"></script>
+    <script src="scripts/controllers/my-profile.js"></script>
+    <script src="scripts/controllers/header.js"></script>
+    <!-- endbuild -->
 
-        <script>
-    System.config({
-      packages: {
-        app: {
-          format: 'cjs',
-          defaultExtension: 'js'
-        }
-      }
+    <script>
+      System.config({
+        packages: {
+          scripts: {
+            format: 'cjs',
+            defaultExtension: 'js',
+          }
+        },
+      });
 
-    });
+      System.import('scripts/bootstrap.js').then(null, console.error.bind(console));
 
-    System.config({
-      meta: {
-        // meaning [baseURL]/vendor/angular.js when no other rules are present
-        // path is normalized using map and paths configuration
-        'angular2': {
-          format: 'cjs', // load this module as a global
-          exports: 'angular2' // the global property to take as the module value
-
-        }
-      }
-    });
-
-
-    System.import('scripts/bootstrap.js').then(null, console.error.bind(console));
     </script>
 </body>
 </html>
