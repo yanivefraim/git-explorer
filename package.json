@@ -46,7 +46,10 @@
     "karma-phantomjs-launcher": "*",
     "phantomjs": "^1.9.19",
     "time-grunt": "^1.0.0",
-    "typescript": "^1.7.5"
+    "typescript": "^1.7.5",
+    "angular-cli": "0.0.*",
+    "angular-cli-github-pages": "^0.2.0",
+    "ember-cli-inject-live-reload": "^1.3.0"
   },
   "engines": {
     "node": ">=0.10.0"
