@@ -9,4 +9,6 @@ angular
 .module('githubExplorerApp')
 .directive('repositoryIssue', adapter.downgradeNg2Component(RepositoryIssue));
 
+adapter.upgradeNg1Provider('dataService');
+
 adapter.bootstrap(document.body, ['githubExplorerApp']);

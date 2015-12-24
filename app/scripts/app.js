@@ -107,9 +107,12 @@ angular
       .state('issue', {
         parent: 'repository',
         url: '/issue/:number',
-        template: `<repository-issue [issue]="vm.issue"></repository-issue>`,
+        template: `<repository-issue [issue]="vm.issue" [repository]="vm.repositoryData"></repository-issue>`,
         // templateUrl: 'views/repository-issue.html',
-        controller: function(issue) { this.issue = issue; },
+        controller: function(issue, $stateParams) {
+          this.issue = issue;
+          this.repositoryData = {login: $stateParams.login, fullName: $stateParams.fullName };
+        },
         controllerAs: 'vm',
         resolve: {
           issue: function(dataService, $stateParams) {
