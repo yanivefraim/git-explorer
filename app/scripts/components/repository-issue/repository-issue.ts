@@ -17,8 +17,7 @@ import {HTTP_PROVIDERS} from 'angular2/http';
         {{comment.body}}
       </li>
     </ul>
-  `,
-  providers: [GithubService, HTTP_PROVIDERS]
+  `
 })
 export default class RepositoryIssue implements OnInit {
   comments: Array<any>;
