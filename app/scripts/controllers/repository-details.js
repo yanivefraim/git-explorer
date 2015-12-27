@@ -32,7 +32,7 @@ angular.module('githubExplorerApp')
       if (!isStarred) {
         dataService.starRepository($scope.repository.full_name).then(function () {
           isStarred = !isStarred;
-          //starring = false;
+          starring = false;
         }, function () {
           //isStarred = !isStarred;
         });
