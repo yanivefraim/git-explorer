@@ -93,9 +93,8 @@ angular
         parent: 'repository',
         url: '/issues',
         template: `<repository-issues [issues]="vm.issues" [repository]="vm.repositoryData"></repository-issues>`,
-        controller: function(issues, repository, $stateParams) {
+        controller: function(issues, repository) {
           this.issues = issues;
-          //this.repositoryData = {login: $stateParams.login, fullName: $stateParams.fullName };
           this.repositoryData = repository;
         },
         controllerAs: 'vm',
@@ -113,9 +112,9 @@ angular
         url: '/issue/:number',
         template: `<repository-issue [issue]="vm.issue" [repository]="vm.repositoryData"></repository-issue>`,
         // templateUrl: 'views/repository-issue.html',
-        controller: function(issue, $stateParams) {
+        controller: function(issue, repository) {
           this.issue = issue;
-          this.repositoryData = {login: $stateParams.login, fullName: $stateParams.fullName };
+          this.repositoryData = repository;
         },
         controllerAs: 'vm',
         resolve: {
