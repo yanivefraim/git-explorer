@@ -31,19 +31,19 @@ angular.module('githubExplorerApp')
       starring = true;
       if (!isStarred) {
         dataService.starRepository($scope.repository.full_name).then(function () {
-          starring = false;
-        }, function () {
           isStarred = !isStarred;
+          //starring = false;
+        }, function () {
+          //isStarred = !isStarred;
         });
       } else {
         dataService.unStarRepository($scope.repository.full_name).then(function () {
-
+          isStarred = !isStarred;
           starring = false;
         }, function () {
-          isStarred = !isStarred;
+          //isStarred = !isStarred;
         });
       }
-      isStarred = !isStarred;
     };
 
     $scope.isRepositoryStarred = function () {
