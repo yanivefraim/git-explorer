@@ -1,0 +1,37 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "isolatedModules": false,
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true
+    },
+    "filesGlob": [
+        "**/*.ts",
+        "**/*.tsx",
+        "!node_modules/**"
+    ],
+    "compileOnSave": true,
+    "buildOnSave": false,
+    "files": [
+        "bootstrap.ts",
+        "components/repository-details/repository-details.spec.ts",
+        "components/repository-details/repository-details.ts",
+        "components/repository-issue/repository-issue.spec.ts",
+        "components/repository-issue/repository-issue.ts",
+        "components/repository-issues/repository-issues.spec.ts",
+        "components/repository-issues/repository-issues.ts",
+        "services/github-service.ts"
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    }
+}
