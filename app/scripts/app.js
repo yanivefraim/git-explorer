@@ -56,8 +56,13 @@ angular
       .state('details', {
         parent: 'repository',
         url: '/details',
-        templateUrl: 'views/repository-details.html',
-        controller: 'RepositoryDetailsCtrl'
+        template: `<repository-details [repository]="vm.repositoryData" [userdata]="vm.userData"></repository-details>`,
+        controller: function(repository, localStorageService) {
+          this.repositoryData = repository;
+          this.userData = localStorageService.get('userData');
+          console.log(this.userData);
+        },
+        controllerAs: 'vm'
       })
       .state('contributors', {
         parent: 'repository',
