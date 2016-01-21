@@ -38,7 +38,7 @@ module.exports = function (grunt) {
         tasks: ['wiredep']
       },
       typescript: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.ts'],
+        files: ['<%= yeoman.app %>/scripts/{,*/}*.ts', '<%= yeoman.app %>/scripts/**/*.ts'],
         tasks: ['typescript:base']
       },
       typescriptTest: {
