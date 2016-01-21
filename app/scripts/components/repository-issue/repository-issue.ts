@@ -29,8 +29,7 @@ export default class RepositoryIssue implements OnInit {
 
   ngOnInit() {
 
-    let login = this.repository.full_name.split('/')[0];
-    let fullName = this.repository.full_name.split('/')[1];
+    let [login, fullName] = this.repository.full_name.split('/');
     this.githubService.getIssueComment(login, fullName, this.issue.number)
     .subscribe((res) => {
       this.comments = res;
