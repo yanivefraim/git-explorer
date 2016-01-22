@@ -4,6 +4,7 @@ import {UpgradeAdapter} from 'angular2/upgrade';
 import RepositoryIssue from './components/repository-issue/repository-issue';
 import RepositoryIssues from './components/repository-issues/repository-issues';
 import RepositoryDetails from './components/repository-details/repository-details';
+import RepositoryEdit from './components/repository-edit/repository-edit';
 import GithubService from './services/github-service';
 import {HTTP_PROVIDERS} from 'angular2/http';
 
@@ -23,6 +24,9 @@ angular
 .module('githubExplorerApp')
 .directive('repositoryDetails', adapter.downgradeNg2Component(RepositoryDetails));
 
+angular
+.module('githubExplorerApp')
+.directive('repositoryEdit', adapter.downgradeNg2Component(RepositoryEdit));
 
 adapter.addProvider(GithubService);
 
