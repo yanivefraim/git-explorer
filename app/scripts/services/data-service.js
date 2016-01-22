@@ -180,16 +180,16 @@ angular.module('githubExplorerApp')
     //   });
     // };
 
-    dataService.unStarRepository = function (fullName) {
-      return this.getAccessToken('?')
-      .then(function(accesstoken) {
-        var url = 'https://api.github.com/user/starred/' + fullName + accesstoken;
-        return $http({
-          url: url,
-          method: 'DELETE'
-        });
-      });
-    };
+    // dataService.unStarRepository = function (fullName) {
+    //   return this.getAccessToken('?')
+    //   .then(function(accesstoken) {
+    //     var url = 'https://api.github.com/user/starred/' + fullName + accesstoken;
+    //     return $http({
+    //       url: url,
+    //       method: 'DELETE'
+    //     });
+    //   });
+    // };
 
     dataService.getAuthenticatedUSerProfile = function () {
       return this.getAccessToken('?')
