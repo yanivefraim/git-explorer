@@ -34,7 +34,10 @@ export default class RepositoryIssues {
   constructor() {}
 
   isOwner() {
-    return this.repository.permissions.admin;
+    if (!this.repository.permissions) {
+      return false;
+    }
+    return this.repository.permissions.admin; //TODO: refactor to a service
   }
 
 }

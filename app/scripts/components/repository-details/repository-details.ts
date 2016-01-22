@@ -46,6 +46,9 @@ export default class RepositoryDetails implements OnInit {
   }
 
   isOwner(): boolean {
+    if (!this.repository.permissions) {
+      return false;
+    }
     return this.repository.permissions.admin;
   }
 
