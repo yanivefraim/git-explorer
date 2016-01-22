@@ -19,4 +19,28 @@ export default class GithubService {
       return toPromise.call(this.http.get(url));
     });
   }
+
+  isRepositoryStarred(fullName) {
+    return this.dataService.getAccessToken('?')
+    .then((accesstoken) => {
+      var url = `https://api.github.com/user/starred/${fullName}${accesstoken}`;
+      return toPromise.call(this.http.get(url));
+    });
+  }
+
+  starRepository(fullName) {
+    return this.dataService.getAccessToken('?')
+    .then((accesstoken) => {
+      var url = `https://api.github.com/user/starred/${fullName}${accesstoken}`;
+      return toPromise.call(this.http.put(url));
+    });
+  }
+
+  unStarRepository(fullName) {
+    return this.dataService.getAccessToken('?')
+    .then((accesstoken) => {
+      var url = `https://api.github.com/user/starred/${fullName}${accesstoken}`;
+      return toPromise.call(this.http.delete(url));
+    });
+  }
 }

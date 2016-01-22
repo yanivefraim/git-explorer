@@ -155,30 +155,30 @@ angular.module('githubExplorerApp')
       });
     };
 
-    dataService.isRepositoryStarred = function (fullName) {
-      return this.getAccessToken('?')
-      .then(function(accesstoken) {
-        var url = 'https://api.github.com/user/starred/' + fullName + accesstoken;
-        return $http({
-          url: url,
-          method: 'GET'
-        });
-      });
-    };
-
-    dataService.starRepository = function (fullName) {
-      return this.getAccessToken('?')
-      .then(function(accesstoken) {
-        var url = 'https://api.github.com/user/starred/' + fullName + accesstoken;
-        return $http({
-          url: url,
-          // headers: {
-          //   "Content-Length": 0
-          // },
-          method: 'PUT'
-        });
-      });
-    };
+    // dataService.isRepositoryStarred = function (fullName) {
+    //   return this.getAccessToken('?')
+    //   .then(function(accesstoken) {
+    //     var url = 'https://api.github.com/user/starred/' + fullName + accesstoken;
+    //     return $http({
+    //       url: url,
+    //       method: 'GET'
+    //     });
+    //   });
+    // };
+    //
+    // dataService.starRepository = function (fullName) {
+    //   return this.getAccessToken('?')
+    //   .then(function(accesstoken) {
+    //     var url = 'https://api.github.com/user/starred/' + fullName + accesstoken;
+    //     return $http({
+    //       url: url,
+    //       // headers: {
+    //       //   "Content-Length": 0
+    //       // },
+    //       method: 'PUT'
+    //     });
+    //   });
+    // };
 
     dataService.unStarRepository = function (fullName) {
       return this.getAccessToken('?')

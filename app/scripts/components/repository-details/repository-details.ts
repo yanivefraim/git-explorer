@@ -1,5 +1,6 @@
 import {Component, Input, Inject, OnInit} from 'angular2/core';
 import {NgClass} from 'angular2/common';
+import GithubService from '../../services/github-service';
 
 @Component({
   selector: 'repository-details',
@@ -24,13 +25,13 @@ export default class RepositoryDetails implements OnInit {
   private isStarred: boolean = false;
   @Input() repository: any;
   @Input() userdata: any;
-  constructor(@Inject('dataService') private dataService) {
+  constructor( @Inject(GithubService) private githubService ) {
     //
   }
 
   ngOnInit() {
     this.isStarring = true;
-    this.dataService.isRepositoryStarred(this.repository.full_name)
+    this.githubService.isRepositoryStarred(this.repository.full_name)
     .then((response) => {
       this.isStarred = true;
       this.isStarring = false;
@@ -54,12 +55,12 @@ export default class RepositoryDetails implements OnInit {
     }
     this.isStarring = true;
     if (!this.isStarred) {
-      this.dataService.starRepository(this.repository.full_name).then(() => {
+      this.githubService.starRepository(this.repository.full_name).then(() => {
         this.isStarred = !this.isStarred;
         this.isStarring = false;
       });
     } else {
-      this.dataService.unStarRepository(this.repository.full_name).then(() => {
+      this.githubService.unStarRepository(this.repository.full_name).then(() => {
         this.isStarred = !this.isStarred;
         this.isStarring = false;
       });
