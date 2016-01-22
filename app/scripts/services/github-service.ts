@@ -43,4 +43,12 @@ export default class GithubService {
       return toPromise.call(this.http.delete(url));
     });
   }
+
+  editRepository(fullName, repositoryData) {
+    return this.dataService.getAccessToken('?')
+    .then((accesstoken) => {
+      var url = `https://api.github.com/repos/${fullName}${accesstoken}`;
+      return toPromise.call(this.http.patch(url, JSON.stringify(repositoryData)));
+    });
+  }
 }

@@ -50,18 +50,18 @@ angular.module('githubExplorerApp')
       });
     };
 
-    dataService.editRepository = function (fullName, repositoryData) {
-      return this.getAccessToken('?')
-      .then(function(accesstoken) {
-        var url = $interpolate('https://api.github.com/repos/{{fullName}}'+ accesstoken)({fullName: fullName });
-        return $http({
-          url: url,
-          method: 'PATCH',
-          data: repositoryData,
-          cache: true
-        });
-      });
-    };
+    // dataService.editRepository = function (fullName, repositoryData) {
+    //   return this.getAccessToken('?')
+    //   .then(function(accesstoken) {
+    //     var url = $interpolate('https://api.github.com/repos/{{fullName}}'+ accesstoken)({fullName: fullName });
+    //     return $http({
+    //       url: url,
+    //       method: 'PATCH',
+    //       data: repositoryData,
+    //       cache: true
+    //     });
+    //   });
+    // };
 
     dataService.getContributors = function (owner, name) {
       return this.getAccessToken('?')
@@ -121,16 +121,16 @@ angular.module('githubExplorerApp')
       });
     };
 
-    dataService.getIssueComment = function (owner, name, number) {
-      return this.getAccessToken('?')
-      .then(function(accesstoken) {
-        var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues/'+ number + '/comments' + accesstoken)({owner: owner, name: name });
-        return $http({
-          url: url,
-          method: 'GET'
-        });
-      });
-    };
+    // dataService.getIssueComment = function (owner, name, number) {
+    //   return this.getAccessToken('?')
+    //   .then(function(accesstoken) {
+    //     var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues/'+ number + '/comments' + accesstoken)({owner: owner, name: name });
+    //     return $http({
+    //       url: url,
+    //       method: 'GET'
+    //     });
+    //   });
+    // };
 
     dataService.getAuthenticatedUserData = function () {
       return this.getAccessToken('?')

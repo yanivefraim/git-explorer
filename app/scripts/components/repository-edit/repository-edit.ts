@@ -1,5 +1,6 @@
 import {Component, Input, Inject} from 'angular2/core';
 import {NgForm} from 'angular2/common';
+import GithubService from '../../services/github-service';
 
 @Component({
   selector: 'repository-edit',
@@ -19,10 +20,10 @@ import {NgForm} from 'angular2/common';
 export default class RepositoryEdit {
 
   @Input() repository
-  constructor(@Inject('dataService') private dataService) {}
+  constructor(@Inject(GithubService) private githubService) {}
 
   editRepository() {
-    this.dataService.editRepository(this.repository.full_name, {name: this.repository.name, description: this.repository.description})
+    this.githubService.editRepository(this.repository.full_name, {name: this.repository.name, description: this.repository.description})
     .then(() => {
       var url = `/repository/${this.repository.full_name}/details`;
       window.location.hash = url; //TODO: change this to be navigate by button??
