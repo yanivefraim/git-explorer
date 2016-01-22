@@ -1,6 +1,5 @@
 import {Component, Input, Inject} from 'angular2/core';
 import {NgForm} from 'angular2/common';
-import {Repository} from './repository';
 
 @Component({
   selector: 'repository-edit',
@@ -26,7 +25,6 @@ export default class RepositoryEdit {
     this.dataService.editRepository(this.repository.full_name, {name: this.repository.name, description: this.repository.description})
     .then(() => {
       var url = `/repository/${this.repository.full_name}/details`;
-      //$location.path(url);
       window.location.hash = url; //TODO: change this to be navigate by button??
     });
   }
