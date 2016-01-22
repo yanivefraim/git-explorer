@@ -31,8 +31,8 @@ export default class RepositoryIssue implements OnInit {
 
     let [login, fullName] = this.repository.full_name.split('/');
     this.githubService.getIssueComment(login, fullName, this.issue.number)
-    .subscribe((res) => {
-      this.comments = res;
+    .then((res) => {
+      this.comments = res.json();
     });
   }
 }

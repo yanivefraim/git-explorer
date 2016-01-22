@@ -29,11 +29,14 @@ export default class RepositoryDetails implements OnInit {
   }
 
   ngOnInit() {
+    this.isStarring = true;
     this.dataService.isRepositoryStarred(this.repository.full_name)
     .then((response) => {
       this.isStarred = true;
+      this.isStarring = false;
     }, (response) => {
       this.isStarred = false;
+      this.isStarring = false;
     });
   }
 

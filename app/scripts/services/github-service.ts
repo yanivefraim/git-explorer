@@ -2,6 +2,9 @@
 import {Inject, Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
 import {Observable} from 'rxjs/Rx';
+import 'rxjs/add/operator/toPromise';
+import {toPromise} from 'rxjs/operator/toPromise';
+
 
 @Injectable()
 export default class GithubService {
@@ -11,16 +14,9 @@ export default class GithubService {
   }
 
   getIssueComment(owner, name, number) {
-
-    var promise = new Promise((resolve, reject) => {
-      this.dataService.getAccessToken('?').then((accesstoken) => {
-        var url = `https://api.github.com/repos/${owner}/${name}/issues/${number}/comments${accesstoken}`;
-        return this.http.get(url)
-          .map(response => response.json())
-          .subscribe(data => resolve(data)
-          , err => reject(err));
-      });
+    return this.dataService.getAccessToken('?').then((accesstoken) => {
+      var url = `https://api.github.com/repos/${owner}/${name}/issues/${number}/comments${accesstoken}`;
+      return toPromise.call(this.http.get(url));
     });
-    return Observable.fromPromise(promise);
   }
 }
