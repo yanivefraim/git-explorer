@@ -67,9 +67,12 @@ angular
       .state('contributors', {
         parent: 'repository',
         url: '/contributors',
-        templateUrl: 'views/repository-contributors.html',
-        controller: 'RepositoryContributorsCtrl',
-        //controllerAs: 'repositoryDetails',
+        template: `<repository-contributors [contributors]="vm.contributors"></repository-contributors>`,
+        controller: function(contributors) {
+          this.contributors = contributors;
+          console.log(`this.contributors`, this.contributors);
+        },
+        controllerAs: 'vm',
         resolve: {
           contributors: function(dataService, $stateParams) {
             return dataService.getContributors($stateParams.login, $stateParams.fullName).then(function(response) {
