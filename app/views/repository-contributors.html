@@ -1,11 +1,20 @@
-<table class="table table-striped"> <thead> <tr> <th>#</th> <th>Login</th> <th>How do I look?</th> <th>Contribution</th> </tr> </thead>
-<tbody ng-repeat="contributor in contributors"> <tr> <th scope="row">{{$index}}</th> <td>{{contributor.login}}</td> <td><img src="{{contributor.avatar_url}}" style="height: 40px; width: 40px;" /></td><td><span class="badge">{{contributor.contributions}}</span></td> </tr> </tbody> </table>
-<!--
-<ul class="list-group">
-  <li class="list-group-item" ng-repeat="contributor in contributors">
-    <span class="badge">{{contributor.contributions}}</span>
-    <span>{{contributor.login}}</span>
-    <img src="{{contributor.avatar_url}}" style="height: 40px; width: 40px;" />
-  </li>
-</ul>
- -->
+<!-- <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Login</th>
+      <th>How do I look?</th>
+      <th>Contribution</th>
+    </tr>
+  </thead>
+  <tbody ng-repeat="contributor in contributors">
+    <tr>
+      <th scope="row">{{$index}}</th>
+      <td>{{contributor.login}}</td>
+      <td><img src="{{contributor.avatar_url}}" style="height: 40px; width: 40px;"/></td>
+      <td>
+        <span class="badge">{{contributor.contributions}}</span>
+      </td>
+    </tr>
+  </tbody>
+</table> -->

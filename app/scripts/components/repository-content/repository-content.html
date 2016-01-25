@@ -1,0 +1,20 @@
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>size</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="#item of content | OrderBy: 'type'">
+    <tr>
+      <td>
+        <span class="glyphicon" [ngClass]="{'glyphicon-folder-open': item.type === 'dir', 'glyphicon-file': item.type === 'file'}"></span>
+      </td>
+      <td>{{item.name}}</td>
+      <td>
+        <span *ngIf="item.type !== 'dir'" class="badge">{{item.size}}</span>
+      </td>
+    </tr>
+  </tbody>
+</table>

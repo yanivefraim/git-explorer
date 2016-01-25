@@ -85,9 +85,11 @@ angular
       .state('content', {
         parent: 'repository',
         url: '/content',
-        templateUrl: 'views/repository-content.html',
-        controller: 'RepositoryContentCtrl',
-        //controllerAs: 'repositoryDetails',
+        template: `<repository-content [content]="vm.content"></repository-content>`,
+        controller: function(content) {
+          this.content = content;
+        },
+        controllerAs: 'vm',
         resolve: {
           content: function(dataService, $stateParams) {
             return dataService.getContent($stateParams.login, $stateParams.fullName).then(function(response) {

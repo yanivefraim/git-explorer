@@ -6,6 +6,7 @@ import RepositoryIssues from './components/repository-issues/repository-issues';
 import RepositoryDetails from './components/repository-details/repository-details';
 import RepositoryEdit from './components/repository-edit/repository-edit';
 import RepositoryContributors from './components/repository-contributors/repository-contributors';
+import RepositoryContent from './components/repository-content/repository-content';
 import GithubService from './services/github-service';
 import {HTTP_PROVIDERS} from 'angular2/http';
 
@@ -32,6 +33,11 @@ angular
 angular
 .module('githubExplorerApp')
 .directive('repositoryContributors', adapter.downgradeNg2Component(RepositoryContributors));
+
+angular
+.module('githubExplorerApp')
+.directive('repositoryContent', adapter.downgradeNg2Component(RepositoryContent));
+
 
 adapter.addProvider(GithubService);
 

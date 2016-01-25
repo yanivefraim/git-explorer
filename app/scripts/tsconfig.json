@@ -23,6 +23,8 @@
     "buildOnSave": false,
     "files": [
         "bootstrap.ts",
+        "components/repository-content/repository-content.spec.ts",
+        "components/repository-content/repository-content.ts",
         "components/repository-contributors/repository-contributors.spec.ts",
         "components/repository-contributors/repository-contributors.ts",
         "components/repository-details/repository-details.spec.ts",
@@ -33,6 +35,8 @@
         "components/repository-issue/repository-issue.ts",
         "components/repository-issues/repository-issues.spec.ts",
         "components/repository-issues/repository-issues.ts",
+        "pipes/order-by/order-by.spec.ts",
+        "pipes/order-by/order-by.ts",
         "services/github-service.ts"
     ],
     "atom": {

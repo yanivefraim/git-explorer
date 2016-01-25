@@ -1,4 +1,4 @@
-<table class="table table-condensed">
+<!-- <table class="table table-condensed">
   <thead>
     <tr>
       <th></th>
@@ -8,9 +8,13 @@
   </thead>
   <tbody ng-repeat="item in content | orderBy: 'type'">
     <tr>
-      <td><span ng-class="{'glyphicon glyphicon-folder-open': item.type === 'dir', 'glyphicon glyphicon-file': item.type === 'file'}"></span></td>
+      <td>
+        <span ng-class="{'glyphicon glyphicon-folder-open': item.type === 'dir', 'glyphicon glyphicon-file': item.type === 'file'}"></span>
+      </td>
       <td>{{item.name}}</td>
-      <td><span ng-if="item.type !== 'dir'" class="badge">{{item.size}}</span></td>
+      <td>
+        <span ng-if="item.type !== 'dir'" class="badge">{{item.size}}</span>
+      </td>
     </tr>
   </tbody>
-</table>
+</table> -->
