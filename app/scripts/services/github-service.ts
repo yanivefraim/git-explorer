@@ -51,4 +51,17 @@ export default class GithubService {
       return toPromise.call(this.http.patch(url, JSON.stringify(repositoryData)));
     });
   }
+
+  searchRepositories(searchExp) {
+    var promise = new Promise((resolve, reject) => {
+      this.dataService.getAccessToken('&').then((accesstoken) => {
+        var url = `https://api.github.com/search/repositories?q=${searchExp}+language:js+language:typescript&sort=stars&order=desc${accesstoken}`;
+        return this.http.get(url)
+          .map(response => response.json())
+          .subscribe(data => resolve(data)
+          , err => reject(err));
+      });
+    });
+    return Observable.fromPromise(promise);
+  }
 }

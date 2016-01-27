@@ -24,19 +24,19 @@ angular.module('githubExplorerApp')
       });
     };
 
-    dataService.searchRepositories = function(searchExp) {
-      return this.getAccessToken('&')
-      .then(function(accesstoken) {
-        var url = $interpolate('https://api.github.com/search/repositories?q={{search}}+language:js+language:typescript&sort=stars&order=desc'+accesstoken)({search: searchExp});
-        return $http({
-          url: url,
-          method: 'GET',
-          cache: true
-        });
-      }).then(function(response) {
-        return response.data;
-      });
-    };
+    // dataService.searchRepositories = function(searchExp) {
+    //   return this.getAccessToken('&')
+    //   .then(function(accesstoken) {
+    //     var url = $interpolate('https://api.github.com/search/repositories?q={{search}}+language:js+language:typescript&sort=stars&order=desc'+accesstoken)({search: searchExp});
+    //     return $http({
+    //       url: url,
+    //       method: 'GET',
+    //       cache: true
+    //     });
+    //   }).then(function(response) {
+    //     return response.data;
+    //   });
+    // };
 
     dataService.getRepository = function (owner, name) {
       return this.getAccessToken('?')

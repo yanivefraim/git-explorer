@@ -30,7 +30,12 @@ angular
     $stateProvider
       .state('main', {
         url:'/main',
-        template: `<main></main>`
+        template: `<main></main>`,
+        resolve: {
+         authKey: function(dataService) {
+           return dataService.getGitHubToken();
+         }
+        }
       })
       .state('repository', {
         url: '/repository/:login/:fullName',
