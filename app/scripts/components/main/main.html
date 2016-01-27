@@ -1,23 +1,22 @@
-<!-- <h2>Welcome to Github Explorer!</h2>
+<h2>Welcome to Github Explorer!</h2>
 <div style="margin-top: 60px;" class="input-group input-group-lg">
   <span class="input-group-addon glyphicon glyphicon-search" id="sizing-addon1"></span>
-  <input type="text" ng-model="main.search" ng-model-options="{ debounce: 500 }" class="form-control" placeholder="Search a repository" aria-describedby="sizing-addon1">
+  <input type="text" [ngFormControl]="searchKey" class="form-control" placeholder="Search a repository" aria-describedby="sizing-addon1"/>
 </div>
 
-
 <ul class="list-group">
-  <li class="list-group-item" ng-repeat="item in main.items">
+  <li class="list-group-item" *ngFor="#item of items">
     <span class="badge">{{item.stargazers_count}}</span>
     <a href="#/repository/{{item.full_name.split('/')[0]}}/{{item.full_name.split('/')[1]}}/details">{{item.full_name}}</a>
   </li>
 </ul>
 
-<div ng-if="main.recentItems && !main.items">
+<div *ngIf="recentItems && !items">
   <h3>Recent items:</h3>
   <ul class="list-group">
-    <li class="list-group-item" ng-repeat="item in main.recentItems">
+    <li class="list-group-item" *ngFor="#item of recentItems">
       <span class="badge">{{item.stargazers_count}}</span>
       <a href="#/repository/{{item.full_name.split('/')[0]}}/{{item.full_name.split('/')[1]}}/details">{{item.full_name}}</a>
     </li>
   </ul>
-</div> -->
+</div>
