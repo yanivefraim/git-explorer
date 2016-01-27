@@ -22,11 +22,11 @@ export default class Main {
     this.searchKey.valueChanges
                   .debounceTime(400)
                   .distinctUntilChanged()
-                  .subscribe(searchKey => this.githubService.searchRepositories(searchKey)
+                  .flatMap(searchKey => this.githubService.searchRepositories(searchKey))
                   .subscribe((response: any) => {
                     this.items = response.items.slice(0,10);
                     this.localStorageService.set('lastItems', this.items);
-                  }));
+                  });
   }
 
 }
