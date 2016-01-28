@@ -23,6 +23,8 @@
     "buildOnSave": false,
     "files": [
         "bootstrap.ts",
+        "components/header/header.spec.ts",
+        "components/header/header.ts",
         "components/main/main.spec.ts",
         "components/main/main.ts",
         "components/repository-content/repository-content.spec.ts",

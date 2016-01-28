@@ -1,0 +1,33 @@
+<div class="header" style="border-bottom: 0;">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="navbar-brand" href="#/">Github Explorer</a>
+
+      </div>
+
+      <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#/">Home</a></li>
+          <li><a href="#/about">My Stars (144)</a></li>
+          <li><a href="#/my-profile">My Profile</a></li>
+        </ul>
+         <a *ngIf="!userData" href="https://github.com/login/oauth/authorize?client_id=18793c9049f0ec2acc4a&scope=public_repo" style="position: absolute;top: -2px; right: 20px;padding: 10px;">login</a>
+        <div *ngIf="userData" style="position: absolute;top: -2px; right: 20px;">
+          <span style="padding: 10px;">Hello {{userData.name}}</span>
+          <img src="{{userData.avatar_url}}" style="width: 60px; height: 60px;padding: 10px;" />
+          <a *ngIf="userData" href class="glyphicon glyphicon-log-out" (click)="logout()"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
