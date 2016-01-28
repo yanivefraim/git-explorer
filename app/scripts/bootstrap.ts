@@ -9,6 +9,7 @@ import RepositoryContributors from './components/repository-contributors/reposit
 import RepositoryContent from './components/repository-content/repository-content';
 import Main from './components/main/main';
 import Header from './components/header/header';
+import MyProfile from './components/my-profile/my-profile';
 import GithubService from './services/github-service';
 import {HTTP_PROVIDERS} from 'angular2/http';
 
@@ -47,6 +48,10 @@ angular
 angular
 .module('githubExplorerApp')
 .directive('header', adapter.downgradeNg2Component(Header));
+
+angular
+.module('githubExplorerApp')
+.directive('myProfile', adapter.downgradeNg2Component(MyProfile));
 
 adapter.addProvider(GithubService);
 

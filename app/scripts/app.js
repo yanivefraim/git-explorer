@@ -145,8 +145,11 @@ angular
       })
       .state('my-profile', {
         url: '/my-profile',
-        templateUrl: 'views/my-profile.html',
-        controller: 'MyProfileCtrl',
+        template: `<my-profile [profile]="vm.profile"></my-profile>`,
+        controller: function(profile) {
+          this.profile = profile;
+        },
+        controllerAs: 'vm',
         resolve: {
           profile: function(dataService) {
             return dataService.getAuthenticatedUSerProfile().then(function(response) {

@@ -1,0 +1,29 @@
+123
+<div class="panel panel-primary">
+  <div class="panel-heading">{{profile.name}}
+  </div>
+  <div class="panel-body" style="position: relative;">
+    <div><label>Company:</label> {{profile.company}}</div>
+    <div><label>Blog:</label> {{profile.blog}}</div>
+    <div><label>Email:</label> {{profile.email}}</div>
+    <div><label>Location:</label> {{profile.location}}</div>
+  </div>
+</div>
+
+<h3>Last Activity:</h3>
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>date</th>
+      <th>Repository</th>
+      <th>activity type</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="#event of userEvents">
+    <tr>
+      <td>{{event.created_at}}</td>
+      <td>{{event.repo.name}}</td>
+      <td>{{event.type.replace('Event', '')}}</td>
+    </tr>
+  </tbody>
+</table>

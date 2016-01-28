@@ -27,6 +27,8 @@
         "components/header/header.ts",
         "components/main/main.spec.ts",
         "components/main/main.ts",
+        "components/my-profile/my-profile.spec.ts",
+        "components/my-profile/my-profile.ts",
         "components/repository-content/repository-content.spec.ts",
         "components/repository-content/repository-content.ts",
         "components/repository-contributors/repository-contributors.spec.ts",
