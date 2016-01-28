@@ -3,9 +3,6 @@ import {Component, Input} from 'angular2/core';
 @Component({
   selector: 'repository-issues',
   template: `
-    <span *ngIf="isOwner()">
-      <a href="#/repository/{{repository.full_name.split('/')[0]}}/{{repository.full_name.split('/')[1]}}/issues/new">+ new issue</a>
-    </span>
     <table class="table table-condensed">
       <thead>
         <tr>
