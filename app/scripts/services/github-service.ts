@@ -73,4 +73,12 @@ export default class GithubService {
     });
   };
 
+  getAuthenticatedUserData() {
+    return this.dataService.getAccessToken('?')
+    .then((accesstoken) => {
+      var url = `https://api.github.com/user${accesstoken}`;
+      return toPromise.call(this.http.get(url));
+    });
+  };
+
 }

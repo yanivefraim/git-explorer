@@ -75,17 +75,17 @@ angular.module('githubExplorerApp')
       });
     };
 
-    dataService.getAuthenticatedUserEvents = function (userName) {
-      return this.getAccessToken('?')
-      .then(function(accesstoken) {
-        var url = $interpolate('https://api.github.com/users/{{userName}}/events'+accesstoken)({userName: userName});
-        return $http({
-          url: url,
-          method: 'GET',
-          cache: true
-        });
-      });
-    };
+    // dataService.getAuthenticatedUserEvents = function (userName) {
+    //   return this.getAccessToken('?')
+    //   .then(function(accesstoken) {
+    //     var url = $interpolate('https://api.github.com/users/{{userName}}/events'+accesstoken)({userName: userName});
+    //     return $http({
+    //       url: url,
+    //       method: 'GET',
+    //       cache: true
+    //     });
+    //   });
+    // };
 
     dataService.getContent = function (owner, name) {
       return this.getAccessToken('?')
@@ -99,27 +99,27 @@ angular.module('githubExplorerApp')
       });
     };
 
-    dataService.getIssues = function (owner, name) {
-      return this.getAccessToken('?')
-      .then(function(accesstoken) {
-        var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues'+accesstoken)({owner: owner, name: name });
-        return $http({
-          url: url,
-          method: 'GET'
-        });
-      });
-    };
-
-    dataService.getIssue = function (owner, name, number) {
-      return this.getAccessToken('?')
-      .then(function(accesstoken) {
-        var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues/'+number + accesstoken)({owner: owner, name: name });
-        return $http({
-          url: url,
-          method: 'GET'
-        });
-      });
-    };
+    // dataService.getIssues = function (owner, name) {
+    //   return this.getAccessToken('?')
+    //   .then(function(accesstoken) {
+    //     var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues'+accesstoken)({owner: owner, name: name });
+    //     return $http({
+    //       url: url,
+    //       method: 'GET'
+    //     });
+    //   });
+    // };
+    //
+    // dataService.getIssue = function (owner, name, number) {
+    //   return this.getAccessToken('?')
+    //   .then(function(accesstoken) {
+    //     var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues/'+number + accesstoken)({owner: owner, name: name });
+    //     return $http({
+    //       url: url,
+    //       method: 'GET'
+    //     });
+    //   });
+    // };
 
     // dataService.getIssueComment = function (owner, name, number) {
     //   return this.getAccessToken('?')
@@ -132,16 +132,16 @@ angular.module('githubExplorerApp')
     //   });
     // };
 
-    dataService.getAuthenticatedUserData = function () {
-      return this.getAccessToken('?')
-      .then(function(accesstoken) {
-        var url = 'https://api.github.com/user' + accesstoken;
-        return $http({
-          url: url,
-          method: 'GET'
-        });
-      });
-    };
+    // dataService.getAuthenticatedUserData = function () {
+    //   return this.getAccessToken('?')
+    //   .then(function(accesstoken) {
+    //     var url = 'https://api.github.com/user' + accesstoken;
+    //     return $http({
+    //       url: url,
+    //       method: 'GET'
+    //     });
+    //   });
+    // };
 
     dataService.getAuthenticatedUserStarredRepositories = function () {
       return this.getAccessToken('?')

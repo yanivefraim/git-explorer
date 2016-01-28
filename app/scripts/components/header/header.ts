@@ -1,4 +1,5 @@
 import {Component, Inject} from 'angular2/core';
+import GithubService from "../../services/github-service";
 
 @Component({
   selector: 'header',
@@ -7,13 +8,13 @@ import {Component, Inject} from 'angular2/core';
 export default class Header {
 
   userData: any;
-  constructor(@Inject('localStorageService') private localStorageService, @Inject('dataService') dataService) {
+  constructor(@Inject('localStorageService') private localStorageService, @Inject(GithubService) private githubService) {
     if(localStorageService.get('githubKey')) {
 
       if(!localStorageService.get('userData')) {
-        dataService.getAuthenticatedUserData()
+        githubService.getAuthenticatedUserData()
         .then(function(response) {
-          localStorageService.set('userData', response.data);
+          localStorageService.set('userData', response.json());
           this.userData = localStorageService.get('userData');
         });
       }
