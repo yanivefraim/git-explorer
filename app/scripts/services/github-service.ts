@@ -64,4 +64,13 @@ export default class GithubService {
     });
     return Observable.fromPromise(promise);
   }
+
+  getAuthenticatedUserEvents(userName) {
+    return this.dataService.getAccessToken('?')
+    .then((accesstoken) => {
+      var url = `https://api.github.com/users/${userName}/events${accesstoken}`;
+      return toPromise.call(this.http.get(url));
+    });
+  };
+
 }

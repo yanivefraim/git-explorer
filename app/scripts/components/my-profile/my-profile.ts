@@ -1,4 +1,5 @@
 import {Component, Input, Inject, OnInit} from 'angular2/core';
+import GithubService from "../../services/github-service";
 
 @Component({
   selector: 'my-profile',
@@ -8,14 +9,13 @@ export default class MyProfile implements OnInit{
 
   userEvents: Array<any>;
   @Input() profile: any;
-  constructor(@Inject('dataService') private dataService) {
+  constructor(@Inject(GithubService) private githubService) {
     //
   }
 
   ngOnInit() {
-    this.dataService.getAuthenticatedUserEvents(this.profile.login).then((response) => {
-      this.userEvents = response.data;
-      //console.log('567676576576', this.userEvents[0].created_at)
+    this.githubService.getAuthenticatedUserEvents(this.profile.login).then((response) => {
+      this.userEvents = response.json();
     });
   }
 }
