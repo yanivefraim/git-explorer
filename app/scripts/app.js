@@ -134,12 +134,6 @@ angular
           }
         }
       })
-      .state('issues.new', {
-        parent: 'repository',
-        url: '/issues/new',
-        templateUrl: 'views/repository-issues-new.html',
-        controller: 'RepositoryIssuesNewCtrl'
-      })
       .state('edit', {
         parent: 'repository',
         url: '/edit',
