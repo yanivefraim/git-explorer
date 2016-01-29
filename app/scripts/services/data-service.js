@@ -99,27 +99,27 @@ angular.module('githubExplorerApp')
       });
     };
 
-    // dataService.getIssues = function (owner, name) {
-    //   return this.getAccessToken('?')
-    //   .then(function(accesstoken) {
-    //     var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues'+accesstoken)({owner: owner, name: name });
-    //     return $http({
-    //       url: url,
-    //       method: 'GET'
-    //     });
-    //   });
-    // };
-    //
-    // dataService.getIssue = function (owner, name, number) {
-    //   return this.getAccessToken('?')
-    //   .then(function(accesstoken) {
-    //     var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues/'+number + accesstoken)({owner: owner, name: name });
-    //     return $http({
-    //       url: url,
-    //       method: 'GET'
-    //     });
-    //   });
-    // };
+    dataService.getIssues = function (owner, name) {
+      return this.getAccessToken('?')
+      .then(function(accesstoken) {
+        var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues'+accesstoken)({owner: owner, name: name });
+        return $http({
+          url: url,
+          method: 'GET'
+        });
+      });
+    };
+
+    dataService.getIssue = function (owner, name, number) {
+      return this.getAccessToken('?')
+      .then(function(accesstoken) {
+        var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues/'+number + accesstoken)({owner: owner, name: name });
+        return $http({
+          url: url,
+          method: 'GET'
+        });
+      });
+    };
 
     // dataService.getIssueComment = function (owner, name, number) {
     //   return this.getAccessToken('?')
