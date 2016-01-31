@@ -8,7 +8,7 @@
  * Controller of the githubExplorerApp
  */
 angular.module('githubExplorerApp')
-  .controller('HeaderCtrl', function ($scope, dataService, localStorageService) {
+  .controller('HeaderCtrl', function ($scope, dataService, localStorageService, $location) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -27,6 +27,11 @@ angular.module('githubExplorerApp')
     }
 
     $scope.userData = localStorageService.get('userData');
+
+    $scope.navClass = function (page) {
+      var currentRoute = $location.path().substring(1) || 'main';
+      return page === currentRoute ? 'active' : '';
+    };
 
     $scope.logout = function() {
       localStorageService.clearAll();

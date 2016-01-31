@@ -39,9 +39,8 @@
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">My Stars (144)</a></li>
-              <li><a ng-href="#/my-profile">My Profile</a></li>
+              <li ng-class="navClass('main')"><a href="#/">Home</a></li>
+              <li ng-class="navClass('my-profile')"><a ng-href="#/my-profile">My Profile</a></li>
             </ul>
              <a ng-if="!userData" href="https://github.com/login/oauth/authorize?client_id=18793c9049f0ec2acc4a&scope=public_repo" style="position: absolute;top: -2px; right: 20px;padding: 10px;">login</a>
             <div ng-if="userData" style="position: absolute;top: -2px; right: 20px;">
