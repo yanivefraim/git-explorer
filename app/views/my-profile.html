@@ -1,28 +1,33 @@
-<div class="panel panel-primary">
-  <div class="panel-heading">{{myProfile.name}}
+<div ng-if="myProfile !== null">
+  <div class="panel panel-primary">
+    <div class="panel-heading">{{myProfile.name}}
+    </div>
+    <div class="panel-body" style="position: relative;">
+      <div><label>Company:</label> {{myProfile.company}}</div>
+      <div><label>Blog:</label> {{myProfile.blog}}</div>
+      <div><label>Email:</label> {{myProfile.email}}</div>
+      <div><label>Location:</label> {{myProfile.location}}</div>
+    </div>
   </div>
-  <div class="panel-body" style="position: relative;">
-    <div><label>Company:</label> {{myProfile.company}}</div>
-    <div><label>Blog:</label> {{myProfile.blog}}</div>
-    <div><label>Email:</label> {{myProfile.email}}</div>
-    <div><label>Location:</label> {{myProfile.location}}</div>
-  </div>
-</div>
 
-<h3>Last Activity:</h3>
-<table class="table table-condensed">
-  <thead>
-    <tr>
-      <th>date</th>
-      <th>Repository</th>
-      <th>activity type</th>
-    </tr>
-  </thead>
-  <tbody ng-repeat="event in userEvents">
-    <tr>
-      <td>{{event.created_at | date : format : timezone}}</td>
-      <td>{{event.repo.name}}</td>
-      <td>{{event.type.replace('Event', '')}}</td>
-    </tr>
-  </tbody>
-</table>
+  <h3 ng-if="myProfile !== null">Last Activity:</h3>
+  <table class="table table-condensed" ng-if="myProfile !== null">
+    <thead>
+      <tr>
+        <th>date</th>
+        <th>Repository</th>
+        <th>activity type</th>
+      </tr>
+    </thead>
+    <tbody ng-repeat="event in userEvents">
+      <tr>
+        <td>{{event.created_at | date : format : timezone}}</td>
+        <td>{{event.repo.name}}</td>
+        <td>{{event.type.replace('Event', '')}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+ <div ng-if="myProfile === null">
+   <h3>Please <a href="https://github.com/login/oauth/authorize?client_id=18793c9049f0ec2acc4a&scope=public_repo">login</a> in order to see your profile</h3>
+ </div>

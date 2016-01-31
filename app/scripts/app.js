@@ -140,6 +140,8 @@ angular
             return dataService.getAuthenticatedUSerProfile().then(function(response) {
                 console.log(response.data);
                 return response.data;
+            }, function() {
+              return null;
             });
           }
         }

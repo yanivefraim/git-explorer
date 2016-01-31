@@ -17,8 +17,9 @@ angular.module('githubExplorerApp')
 
     $scope.myProfile = profile;
 
-    dataService.getAuthenticatedUserEvents($scope.myProfile.login).then(function(response) {
-      $scope.userEvents = response.data;
-    });
-
+    if ($scope.myProfile !== null) {
+      dataService.getAuthenticatedUserEvents($scope.myProfile.login).then(function(response) {
+        $scope.userEvents = response.data;
+      });
+    }
   });
