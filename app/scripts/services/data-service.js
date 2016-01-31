@@ -220,7 +220,7 @@ angular.module('githubExplorerApp')
           }).then(function(response) {
             localStorageService.set('githubKey', response.token);
             githubKey = localStorageService.get('githubKey');
-
+            window.location = './';
             deferred.resolve(githubKey);
           });
         } else {

@@ -35,5 +35,6 @@ angular.module('githubExplorerApp')
 
     $scope.logout = function() {
       localStorageService.clearAll();
+      $scope.userData = null;
     };
   });
