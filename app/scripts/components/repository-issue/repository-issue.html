@@ -6,9 +6,7 @@
 </div>
 Comments:
 <ul class="list-group">
-  <li class="list-group-item" ng-repeat="comment in comments">
+  <li class="list-group-item" *ngFor="#comment of comments">
   {{comment.body}}
   </li>
 </ul>
-
-
