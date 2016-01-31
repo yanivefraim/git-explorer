@@ -118,30 +118,15 @@
         <!-- endbuild -->
 
         <script>
-    System.config({
-      packages: {
-        app: {
-          format: 'cjs',
-          defaultExtension: 'js'
-        }
-      }
-
-    });
-
-    System.config({
-      meta: {
-        // meaning [baseURL]/vendor/angular.js when no other rules are present
-        // path is normalized using map and paths configuration
-        'angular2': {
-          format: 'cjs', // load this module as a global
-          exports: 'angular2' // the global property to take as the module value
-
-        }
-      }
-    });
-
-
-    System.import('scripts/bootstrap.js').then(null, console.error.bind(console));
-    </script>
+          System.config({
+            packages: {
+              scripts: {
+                format: 'cjs',
+                defaultExtension: 'js',
+              }
+            },
+          });
+          System.import('scripts/bootstrap.js').then(null, console.error.bind(console));
+        </script>
 </body>
 </html>
