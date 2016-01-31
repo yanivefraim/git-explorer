@@ -9,11 +9,6 @@
  */
 angular.module('githubExplorerApp')
   .controller('RepositoryEditCtrl', function ($scope, dataService, $location, $interpolate) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
 
     $scope.editRepository = function () {
       dataService.editRepository($scope.repository.full_name, {name: $scope.repository.name, description: $scope.repository.description})

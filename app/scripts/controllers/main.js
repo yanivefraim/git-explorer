@@ -10,11 +10,6 @@
 angular.module('githubExplorerApp')
   .controller('MainCtrl', function ($scope, dataService, localStorageService, $rootScope) {
     var that = this;
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
 
     that.recentItems = localStorageService.get('lastItems');
 

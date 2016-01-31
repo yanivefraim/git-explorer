@@ -9,11 +9,5 @@
  */
 angular.module('githubExplorerApp')
   .controller('RepositoryContributorsCtrl', function ($scope, contributors) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-
     $scope.contributors = contributors;
   });

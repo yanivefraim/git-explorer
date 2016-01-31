@@ -9,11 +9,6 @@
  */
 angular.module('githubExplorerApp')
   .controller('HeaderCtrl', function ($scope, dataService, localStorageService, $location) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
 
     if(localStorageService.get('githubKey')) {
 

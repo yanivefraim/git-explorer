@@ -9,12 +9,7 @@
  */
 angular.module('githubExplorerApp')
   .controller('MyProfileCtrl', function ($scope, profile, dataService) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-
+    
     $scope.myProfile = profile;
 
     if ($scope.myProfile !== null) {

@@ -9,11 +9,5 @@
  */
 angular.module('githubExplorerApp')
   .controller('RepositoryIssuesCtrl', function ($scope, issues) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-
     $scope.issues = issues;
   });

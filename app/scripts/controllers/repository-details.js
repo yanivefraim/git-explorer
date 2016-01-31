@@ -9,11 +9,6 @@
  */
 angular.module('githubExplorerApp')
   .controller('RepositoryDetailsCtrl', function ($scope, dataService) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
 
     var isStarred = false;
     var starring = false;
@@ -44,11 +39,9 @@ angular.module('githubExplorerApp')
           //isStarred = !isStarred;
         });
       }
-      //isStarred = !isStarred;
     };
 
     $scope.isRepositoryStarred = function () {
       return isStarred;
     };
-    //this.repository = repository;
   });

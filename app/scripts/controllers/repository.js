@@ -9,13 +9,6 @@
  */
 angular.module('githubExplorerApp')
   .controller('ReposirotyCtrl', function ($scope, $location, repository, localStorageService) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-
-    console.log('ReposirotyCtrl');
 
     $scope.isOwner = function() {
       return $scope.repository.permissions.admin;
