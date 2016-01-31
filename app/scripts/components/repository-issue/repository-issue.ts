@@ -1,4 +1,5 @@
 import {Component, Input, OnInit, Inject} from "angular2/core";
+import GithubService from "../../services/github-service";
 
 @Component({
    selector: 'repository-issue',
@@ -10,13 +11,13 @@ import {Component, Input, OnInit, Inject} from "angular2/core";
    comments: Array<any>;
    @Input() issue:any;
    @Input() repository: any;
-   constructor (@Inject('dataService') private dataService) {}
+   constructor (@Inject(GithubService) private githubService) {}
 
    ngOnInit() {
      let [login, fullName] = this.repository.full_name.split('/');
 
-     this.dataService.getIssueComment(login, fullName, this.issue.number).then((response) => {
-       this.comments = response.data;
+     this.githubService.getIssueComment(login, fullName, this.issue.number).then((response) => {
+       this.comments = response.json();
      });
    }
  }

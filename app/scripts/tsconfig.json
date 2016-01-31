@@ -24,7 +24,8 @@
     "files": [
         "app.ts",
         "bootstrap.ts",
-        "components/repository-issue/repository-issue.ts"
+        "components/repository-issue/repository-issue.ts",
+        "services/github-service.ts"
     ],
     "atom": {
         "rewriteTsconfig": true
