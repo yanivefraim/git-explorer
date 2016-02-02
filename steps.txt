@@ -1,0 +1,22 @@
+Steps for migration:
+
+1. Index.html (one time setup)
+  1.1 Install Angular2 and add references
+  1.2 Install SystemJS + add reference + add systemjs configurations
+  1.3 remove manual bootstraping
+  1.4 remove references for files that will be loaded by systemjs
+2. Add async bootstrap file with ngupgrade adapter functionality
+
+
+- start here:
+3. Upgrade a component
+  3.1 - create empty ng2 components
+  3.2 - create empty ng2 template
+  3.3 - Downgrade this component - wrap it with directive
+  3.4 - here you can test your empty component
+  3.5 - Change route to point to a component template (instead of controller) - app.js
+  3.6 - add inputs to this component - app.js
+  3.7 - add inputs to components
+  3.8 - add new component's template
+  3.9 - add new component logic (service call)
+  3.9.1 - upgrade any angular1 service
