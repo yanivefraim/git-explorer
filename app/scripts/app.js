@@ -68,7 +68,6 @@ angular
         resolve: {
           contributors: function(dataService, $stateParams) {
             return dataService.getContributors($stateParams.login, $stateParams.fullName).then(function(response) {
-                console.log(response.data);
                 return response.data;
             });
           }
@@ -83,7 +82,6 @@ angular
         resolve: {
           content: function(dataService, $stateParams) {
             return dataService.getContent($stateParams.login, $stateParams.fullName).then(function(response) {
-                console.log(response.data);
                 return response.data;
             });
           }
@@ -92,9 +90,12 @@ angular
       .state('issues', {
         parent: 'repository',
         url: '/issues',
-        templateUrl: 'views/repository-issues.html',
-        controller: 'RepositoryIssuesCtrl',
-        //controllerAs: 'repositoryDetails',
+        template: '<repository-issues [issues]="vm.issues" [repository]="vm.repository"></repository-issues>',
+        controllerAs: 'vm',
+        controller: function(issues, repository) {
+          this.issues = issues;
+          this.repository = repository;
+        },
         resolve: {
           issues: function(dataService, $stateParams) {
             return dataService.getIssues($stateParams.login, $stateParams.fullName).then(function(response) {
