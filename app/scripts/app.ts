@@ -94,9 +94,12 @@ angular
       .state('issues', {
         parent: 'repository',
         url: '/issues',
-        templateUrl: 'views/repository-issues.html',
-        controller: 'RepositoryIssuesCtrl',
-        //controllerAs: 'repositoryDetails',
+        template: `<repository-issues [issues]="repositoryDetails.issues" [repository]="repositoryDetails.repository"></repository-issues>`,
+        controller: function(issues, repository) {
+          this.issues = issues;
+          this.repository = repository;
+        },
+        controllerAs: 'repositoryDetails',
         resolve: {
           issues: function(dataService, $stateParams) {
             return dataService.getIssues($stateParams.login, $stateParams.fullName).then(function(response) {
