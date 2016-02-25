@@ -7,7 +7,7 @@
       <th>Contribution</th>
     </tr>
   </thead>
-  <tbody ng-repeat="contributor in contributors">
+  <tbody *ngFor="#contributor of contributors">
     <tr>
       <th scope="row">{{$index}}</th>
       <td>{{contributor.login}}</td>
