@@ -1,4 +1,4 @@
-<div ng-if="myProfile !== null">
+<div *ngIf="myProfile !== null">
   <div class="panel panel-primary">
     <div class="panel-heading">{{myProfile.name}}
     </div>
@@ -10,8 +10,8 @@
     </div>
   </div>
 
-  <h3 ng-if="myProfile !== null">Last Activity:</h3>
-  <table class="table table-condensed" ng-if="myProfile !== null">
+  <h3 *ngIf="myProfile !== null">Last Activity:</h3>
+  <table class="table table-condensed" *ngIf="myProfile !== null">
     <thead>
       <tr>
         <th>date</th>
@@ -19,15 +19,15 @@
         <th>activity type</th>
       </tr>
     </thead>
-    <tbody ng-repeat="event in userEvents">
+    <tbody *ngFor="#event of userEvents">
       <tr>
-        <td>{{event.created_at | date : format : timezone}}</td>
+        <td>{{event.created_at | dateParse | date}}</td>
         <td>{{event.repo.name}}</td>
         <td>{{event.type.replace('Event', '')}}</td>
       </tr>
     </tbody>
   </table>
 </div>
- <div ng-if="myProfile === null">
+ <div *ngIf="myProfile === null">
    <h3>Please <a href="https://github.com/login/oauth/authorize?client_id=18793c9049f0ec2acc4a&scope=public_repo">login</a> in order to see your profile</h3>
  </div>
