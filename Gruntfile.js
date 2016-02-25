@@ -501,7 +501,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
-      'tsd:refresh',
+      //'tsd:refresh',
       'concurrent:server',
       'postcss:server',
       'connect:livereload',
