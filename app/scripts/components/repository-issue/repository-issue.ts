@@ -12,14 +12,14 @@ export default class RepositoryIssue implements OnInit {
   comments: any[];
 
   constructor(@Inject(GithubService) private githubService: GithubService) {
-
+    //
   }
 
   ngOnInit() {
     let [login, fullName] = this.repository.full_name.split('/');
 
     this.githubService.getIssueComment(login, fullName, this.issue.number)
-      .then((response) => response.json())
+      .then((response: any) => response.json())
       .then((response) => this.comments = response);
   }
 }
