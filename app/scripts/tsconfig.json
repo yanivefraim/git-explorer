@@ -22,7 +22,9 @@
     "compileOnSave": false,
     "buildOnSave": false,
     "files": [
-        "bootstrap.ts"
+        "app.ts",
+        "bootstrap.ts",
+        "components/repository-issue/repository-issue.ts"
     ],
     "atom": {
         "rewriteTsconfig": true
