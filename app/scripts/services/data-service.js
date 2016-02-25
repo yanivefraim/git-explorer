@@ -121,17 +121,6 @@ angular.module('githubExplorerApp')
       });
     };
 
-    dataService.getIssueComment = function (owner, name, number) {
-      return this.getAccessToken('?')
-      .then(function(accesstoken) {
-        var url = $interpolate('https://api.github.com/repos/{{owner}}/{{name}}/issues/'+ number + '/comments' + accesstoken)({owner: owner, name: name });
-        return $http({
-          url: url,
-          method: 'GET'
-        });
-      });
-    };
-
     dataService.getAuthenticatedUserData = function () {
       return this.getAccessToken('?')
       .then(function(accesstoken) {

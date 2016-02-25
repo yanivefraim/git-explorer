@@ -8,6 +8,9 @@
  *
  * Main module of the application.
  */
+
+declare var angular: any;
+
 angular
   .module('githubExplorerApp', [
     'ngAnimate',
@@ -107,13 +110,16 @@ angular
       .state('issue', {
         parent: 'repository',
         url: '/issue/:number',
-        templateUrl: 'views/repository-issue.html',
-        controller: 'RepositoryIssueCtrl',
-        //controllerAs: 'repositoryDetails',
+        template: `<repository-issue [issue]="ctrl.issue" [repository]="ctrl.repository"></repository-issue>`,
+        controller: function (issue, repository) {
+          this.issue = issue;
+          this.repository = repository;
+        },
+        controllerAs: 'ctrl',
         resolve: {
           issue: function(dataService, $stateParams) {
             return dataService.getIssue($stateParams.login, $stateParams.fullName, $stateParams.number).then(function(response) {
-                console.log(response.data);
+                //console.log(response.data);
                 return response.data;
             });
           }
@@ -132,7 +138,7 @@ angular
         resolve: {
           profile: function(dataService) {
             return dataService.getAuthenticatedUSerProfile().then(function(response) {
-                console.log(response.data);
+                //console.log(response.data);
                 return response.data;
             }, function() {
               return null;
