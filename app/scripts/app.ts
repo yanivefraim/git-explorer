@@ -130,8 +130,11 @@ angular
       .state('edit', {
         parent: 'repository',
         url: '/edit',
-        templateUrl: 'views/repository-edit.html',
-        controller: 'RepositoryEditCtrl'
+        template: `<repository-edit [repository]="ctrl.repository"></repository-edit>`,
+        controllerAs: 'ctrl',
+        controller: function(repository) {
+          this.repository = repository;
+        }
       })
       .state('my-profile', {
         url: '/my-profile',
